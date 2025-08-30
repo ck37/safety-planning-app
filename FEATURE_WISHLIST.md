@@ -8,7 +8,7 @@ This document outlines potential improvements and new features that could enhanc
 - ~~**Mood Tracking Integration**: Daily mood check-ins with trend analysis to identify patterns that precede crisis situations~~ ✅ **IMPLEMENTED**
 - ~~**Smart Notifications**: Proactive reminders based on user patterns (e.g., "You haven't checked in today, how are you feeling?")~~ ✅ **IMPLEMENTED**
 - ~~**Crisis Escalation Levels**: Different intervention strategies based on crisis severity (mild concern → moderate distress → severe crisis)~~ ✅ **IMPLEMENTED**
-- **Automatic Emergency Contacts**: Option to automatically notify designated contacts when crisis level reaches critical threshold
+- **Automatic Emergency Contacts**: Option to automatically notify designated contacts when crisis level reaches critical threshold [📋 **GitHub Issue #1**](https://github.com/ck37/suicide-safety-planning-app/issues/1)
 
 ### Improved Emergency Access
 - ~~**Quick Crisis Button**: Large, always-visible crisis button on home screen for immediate access to safety plan~~ ✅ **IMPLEMENTED**
