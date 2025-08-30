@@ -19,16 +19,27 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 - **Safe Places** - Identify environments that promote safety and well-being
 - **Reasons for Living** - Remember personal motivations and values that provide hope
 
-### Emergency Features
+### Crisis Management & Emergency Features
+- **Quick Crisis Button** - Large, always-visible crisis button on home screen for immediate safety plan access
 - **Crisis Hotline Integration** - One-tap access to the 988 Suicide & Crisis Lifeline
-- **Immediate Access** - Quick access to safety plan during crisis situations
+- **Voice-Activated Safety Plan** - Voice commands to read safety plan aloud when users can't focus on reading
+- **Mood Tracking with Crisis Detection** - Daily mood check-ins with intelligent pattern analysis to identify potential crisis situations
+- **Smart Notifications** - Proactive reminders and interventions based on mood patterns and user behavior
 - **Offline Functionality** - Safety plan remains accessible without internet connection
 
-### Technical Features
+### Security & Privacy Features
+- **Biometric Authentication** - Fingerprint, Face ID, or iris authentication to protect sensitive mental health data
+- **Stealth Mode** - Disguise app appearance for users in unsafe living situations
+- **Auto-Lock Protection** - Configurable automatic locking after periods of inactivity
+- **Device-Level Encryption** - All data secured using device-level encryption and secure storage
+- **Privacy-Focused** - All data remains on the user's device with no external data collection
+
+### Accessibility & User Experience
 - **Cross-Platform** - Available on iOS, Android, and Web
-- **Data Persistence** - Safety plans are securely stored locally on the device
-- **Privacy-Focused** - All data remains on the user's device
 - **Intuitive Interface** - Clean, accessible design optimized for crisis situations
+- **Multiple Access Methods** - Touch, voice, and visual interfaces for different user needs
+- **Crisis-Optimized Design** - Large buttons and clear navigation for use during distressing moments
+- **Comprehensive Testing** - Automated quality assurance with linting and code quality checks
 
 ## 🚀 Future Development
 
