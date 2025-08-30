@@ -71,7 +71,7 @@ jobs:
       run: bun run build-check
 
     - name: Check Expo build (web)
-      run: bunx expo export:web --clear
+      run: bunx expo export --clear
 
     - name: Verify build artifacts
       run: |
