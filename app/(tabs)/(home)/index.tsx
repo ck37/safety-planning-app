@@ -20,6 +20,10 @@ import {
 } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useSafetyPlan } from '@/providers/SafetyPlanProvider';
+import { useMoodTracking } from '@/providers/MoodTrackingProvider';
+import QuickCrisisButton from '@/components/QuickCrisisButton';
+import MoodTracker from '@/components/MoodTracker';
+import VoiceReader from '@/components/VoiceReader';
 import * as Linking from 'expo-linking';
 
 export default function HomeScreen() {
@@ -104,16 +108,27 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </LinearGradient>
 
-      <TouchableOpacity
-        style={styles.editButton}
-        onPress={() => router.push('/edit-plan')}
-        activeOpacity={0.7}
-      >
-        <Edit3 size={18} color="#6B46C1" />
-        <Text style={styles.editButtonText}>Edit Plan</Text>
-      </TouchableOpacity>
+      <View style={styles.actionButtonsContainer}>
+        <TouchableOpacity
+          style={styles.editButton}
+          onPress={() => router.push('/edit-plan')}
+          activeOpacity={0.7}
+        >
+          <Edit3 size={18} color="#6B46C1" />
+          <Text style={styles.editButtonText}>Edit Plan</Text>
+        </TouchableOpacity>
+        
+        <VoiceReader size="large" />
+      </View>
 
       <View style={styles.sections}>
+        {/* Crisis Button */}
+        <View style={styles.crisisButtonContainer}>
+          <QuickCrisisButton size="large" />
+        </View>
+
+        {/* Mood Tracker */}
+        <MoodTracker />
         {sections.map((section) => {
           const Icon = section.icon;
           return (
@@ -189,16 +204,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+  actionButtonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    marginTop: -20,
+    marginBottom: 20,
+    gap: 12,
+  },
   editButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'center',
     backgroundColor: '#FFFFFF',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
-    marginTop: -20,
-    marginBottom: 20,
     gap: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -213,6 +234,9 @@ const styles = StyleSheet.create({
   },
   sections: {
     paddingHorizontal: 20,
+  },
+  crisisButtonContainer: {
+    marginBottom: 16,
   },
   section: {
     backgroundColor: '#FFFFFF',

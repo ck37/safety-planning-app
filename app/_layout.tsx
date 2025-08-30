@@ -4,6 +4,7 @@ import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafetyPlanProvider } from "@/providers/SafetyPlanProvider";
+import { MoodTrackingProvider } from "@/providers/MoodTrackingProvider";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -37,7 +38,9 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <SafetyPlanProvider>
-          <RootLayoutNav />
+          <MoodTrackingProvider>
+            <RootLayoutNav />
+          </MoodTrackingProvider>
         </SafetyPlanProvider>
       </GestureHandlerRootView>
     </QueryClientProvider>
