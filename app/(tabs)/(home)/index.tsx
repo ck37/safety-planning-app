@@ -16,8 +16,7 @@ import {
   Sparkles,
   Shield,
   Edit3,
-  Phone,
-  Settings
+  Phone
 } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useSafetyPlan } from '@/providers/SafetyPlanProvider';

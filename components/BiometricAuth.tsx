@@ -11,7 +11,6 @@ import {
   TouchableOpacity,
   StyleSheet,
   Alert,
-  Platform,
 } from 'react-native';
 import * as LocalAuthentication from 'expo-local-authentication';
 import { Shield, Lock, Fingerprint } from 'lucide-react-native';
@@ -134,7 +133,6 @@ export default function BiometricAuth({
     try {
       const result = await LocalAuthentication.authenticateAsync({
         promptMessage: title,
-        subtitle: subtitle,
         cancelLabel: 'Cancel',
         fallbackLabel: fallbackEnabled ? 'Use Passcode' : undefined,
         disableDeviceFallback: !fallbackEnabled,

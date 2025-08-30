@@ -20,9 +20,7 @@ import {
   Shield, 
   Lock, 
   Eye, 
-  EyeOff, 
   Fingerprint,
-  Settings,
   Info
 } from 'lucide-react-native';
 import { BiometricUtils } from '@/components/BiometricAuth';
