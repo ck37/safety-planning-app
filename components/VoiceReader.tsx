@@ -23,7 +23,13 @@ export default function VoiceReader({ size = 'small' }: VoiceReaderProps) {
   useEffect(() => {
     return () => {
       // Cleanup: stop speech when component unmounts
-      Speech.stop();
+      try {
+        if (Speech && typeof Speech.stop === 'function') {
+          Speech.stop();
+        }
+      } catch (error) {
+        console.error('Cleanup error:', error);
+      }
     };
   }, []);
 
@@ -72,6 +78,12 @@ export default function VoiceReader({ size = 'small' }: VoiceReaderProps) {
     }
 
     try {
+      // Check if Speech module is available
+      if (!Speech || typeof Speech.speak !== 'function') {
+        Alert.alert('Feature Unavailable', 'Voice reading is not available on this device or in development mode.');
+        return;
+      }
+
       const text = generateSafetyPlanText();
       
       if (!text.trim()) {
@@ -111,6 +123,10 @@ export default function VoiceReader({ size = 'small' }: VoiceReaderProps) {
 
   const handlePauseResume = async () => {
     try {
+      if (!Speech || typeof Speech.stop !== 'function') {
+        return;
+      }
+
       if (isPaused) {
         // Resume is not directly supported by expo-speech, so we restart
         await handleStartReading();
@@ -125,11 +141,19 @@ export default function VoiceReader({ size = 'small' }: VoiceReaderProps) {
 
   const handleStop = async () => {
     try {
+      if (!Speech || typeof Speech.stop !== 'function') {
+        setIsReading(false);
+        setIsPaused(false);
+        return;
+      }
+
       await Speech.stop();
       setIsReading(false);
       setIsPaused(false);
     } catch (error) {
       console.error('Stop error:', error);
+      setIsReading(false);
+      setIsPaused(false);
     }
   };
 

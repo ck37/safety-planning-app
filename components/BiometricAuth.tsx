@@ -59,6 +59,18 @@ export default function BiometricAuth({
 
   const checkBiometricCapabilities = async () => {
     try {
+      // Check if LocalAuthentication module is available
+      if (!LocalAuthentication || typeof LocalAuthentication.hasHardwareAsync !== 'function') {
+        console.log('LocalAuthentication module not available');
+        setCapabilities({
+          isAvailable: false,
+          hasHardware: false,
+          isEnrolled: false,
+          supportedTypes: []
+        });
+        return;
+      }
+
       const hasHardware = await LocalAuthentication.hasHardwareAsync();
       const isEnrolled = await LocalAuthentication.isEnrolledAsync();
       const supportedTypes = await LocalAuthentication.supportedAuthenticationTypesAsync();
@@ -71,6 +83,12 @@ export default function BiometricAuth({
       });
     } catch (error) {
       console.error('Error checking biometric capabilities:', error);
+      setCapabilities({
+        isAvailable: false,
+        hasHardware: false,
+        isEnrolled: false,
+        supportedTypes: []
+      });
     }
   };
 
@@ -131,6 +149,18 @@ export default function BiometricAuth({
     setIsAuthenticating(true);
 
     try {
+      // Check if LocalAuthentication module is available
+      if (!LocalAuthentication || typeof LocalAuthentication.authenticateAsync !== 'function') {
+        Alert.alert(
+          'Feature Unavailable',
+          'Biometric authentication is not available in development mode or on this device.',
+          [{ text: 'OK' }]
+        );
+        setIsAuthenticating(false);
+        onAuthFail?.();
+        return;
+      }
+
       const result = await LocalAuthentication.authenticateAsync({
         promptMessage: title,
         cancelLabel: 'Cancel',
@@ -413,6 +443,16 @@ export const BiometricUtils = {
 
   async checkBiometricAvailability(): Promise<BiometricCapabilities> {
     try {
+      // Check if LocalAuthentication module is available
+      if (!LocalAuthentication || typeof LocalAuthentication.hasHardwareAsync !== 'function') {
+        return {
+          isAvailable: false,
+          hasHardware: false,
+          isEnrolled: false,
+          supportedTypes: []
+        };
+      }
+
       const hasHardware = await LocalAuthentication.hasHardwareAsync();
       const isEnrolled = await LocalAuthentication.isEnrolledAsync();
       const supportedTypes = await LocalAuthentication.supportedAuthenticationTypesAsync();
