@@ -6,6 +6,7 @@ export interface MoodEntry {
   warningSignsPresent: string[];
   copingStrategiesUsed: string[];
   timestamp: number;
+  photoUri?: string; // Optional photo associated with the mood entry
 }
 
 export interface MoodTrend {

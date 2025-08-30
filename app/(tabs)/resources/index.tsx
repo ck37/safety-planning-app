@@ -106,13 +106,14 @@ export default function ResourcesScreen() {
   };
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Wellness Resources</Text>
-        <Text style={styles.headerSubtitle}>
-          Tools and techniques to support your mental health journey
-        </Text>
-      </View>
+    <div style={styles.contentWrapper as any}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Wellness Resources</Text>
+          <Text style={styles.headerSubtitle}>
+            Tools and techniques to support your mental health journey
+          </Text>
+        </View>
 
       {resources.map((resource, index) => {
         const Icon = resource.icon;
@@ -160,12 +161,19 @@ export default function ResourcesScreen() {
         <Text style={styles.footerText}>
           Healing is not linear. Be patient and kind with yourself.
         </Text>
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </div>
   );
 }
 
 const styles = StyleSheet.create({
+  contentWrapper: {
+    maxWidth: 800,
+    width: '100%',
+    alignSelf: 'center',
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: '#F9FAFB',

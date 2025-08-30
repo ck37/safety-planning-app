@@ -17,7 +17,9 @@
       "supportsTablet": true,
       "bundleIdentifier": "app.rork.suicide-safety-planner",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "This app needs access to camera to let you take photos for your mood entries.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to photo library to let you select photos for your mood entries."
       }
     },
     "android": {
@@ -25,7 +27,12 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ck37.suicidesafetyplanner"
+      "package": "com.ck37.suicidesafetyplanner",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
@@ -37,7 +44,14 @@
           "origin": "https://rork.com/"
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you select images for your mood entries.",
+          "cameraPermission": "The app accesses your camera to let you take photos for your mood entries."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

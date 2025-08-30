@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,11 +6,10 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
   Platform,
   Alert,
 } from 'react-native';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { 
   AlertCircle, 
   Heart, 
@@ -27,11 +26,29 @@ import { SafetyPlan, Contact } from '@/types/SafetyPlan';
 export default function EditPlanScreen() {
   const { safetyPlan, updateSafetyPlan } = useSafetyPlan();
   const [editedPlan, setEditedPlan] = useState<SafetyPlan>(safetyPlan);
+  const { section } = useLocalSearchParams<{ section?: string }>();
+  const scrollViewRef = useRef<ScrollView>(null);
+  const sectionRefs = useRef<{ [key: string]: View | null }>({});
 
   // Sync editedPlan with safetyPlan when safetyPlan changes
   useEffect(() => {
     setEditedPlan(safetyPlan);
   }, [safetyPlan]);
+
+  // Auto-scroll to focused section
+  useEffect(() => {
+    if (section && sectionRefs.current[section]) {
+      setTimeout(() => {
+        sectionRefs.current[section]?.measureLayout(
+          scrollViewRef.current?.getInnerViewNode() as any,
+          (x, y) => {
+            scrollViewRef.current?.scrollTo({ y: y - 20, animated: true });
+          },
+          () => {}
+        );
+      }, 100);
+    }
+  }, [section]);
 
   const handleSave = () => {
     updateSafetyPlan(editedPlan);
@@ -73,78 +90,123 @@ export default function EditPlanScreen() {
     }));
   };
 
+  const renderContent = () => (
+    <>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>
+          Create a personalized safety plan for when you&apos;re in crisis
+        </Text>
+      </View>
+
+      <Section
+        ref={(ref) => { sectionRefs.current['warning-signs'] = ref; }}
+        title="Warning Signs"
+        subtitle="What thoughts, feelings, or behaviors tell you a crisis may be developing?"
+        icon={AlertCircle}
+        color="#EF4444"
+        items={editedPlan.warningSigns}
+        onAdd={(value) => addItem('warningSigns', value)}
+        onRemove={(index) => removeItem('warningSigns', index)}
+        placeholder="e.g., Feeling hopeless, isolating myself"
+        isHighlighted={section === 'warning-signs'}
+      />
+
+      <Section
+        ref={(ref) => { sectionRefs.current['coping-strategies'] = ref; }}
+        title="Coping Strategies"
+        subtitle="What can you do on your own to help yourself not act on thoughts of suicide?"
+        icon={Shield}
+        color="#10B981"
+        items={editedPlan.copingStrategies}
+        onAdd={(value) => addItem('copingStrategies', value)}
+        onRemove={(index) => removeItem('copingStrategies', index)}
+        placeholder="e.g., Take a walk, listen to music"
+        isHighlighted={section === 'coping-strategies'}
+      />
+
+      <ContactSection
+        ref={(ref) => { sectionRefs.current['support-contacts'] = ref; }}
+        title="Support Contacts"
+        subtitle="Who can you reach out to for support?"
+        icon={Users}
+        color="#3B82F6"
+        contacts={editedPlan.supportContacts}
+        onAdd={addContact}
+        onRemove={removeContact}
+        isHighlighted={section === 'support-contacts'}
+      />
+
+      <Section
+        ref={(ref) => { sectionRefs.current['safe-places'] = ref; }}
+        title="Safe Places"
+        subtitle="Where can you go to feel safe and distract yourself?"
+        icon={MapPin}
+        color="#F59E0B"
+        items={editedPlan.safePlaces}
+        onAdd={(value) => addItem('safePlaces', value)}
+        onRemove={(index) => removeItem('safePlaces', index)}
+        placeholder="e.g., Library, friend's house, park"
+        isHighlighted={section === 'safe-places'}
+      />
+
+      <Section
+        ref={(ref) => { sectionRefs.current['reasons-for-living'] = ref; }}
+        title="Reasons for Living"
+        subtitle="What are your reasons for living? What gives you hope?"
+        icon={Heart}
+        color="#EC4899"
+        items={editedPlan.reasonsForLiving}
+        onAdd={(value) => addItem('reasonsForLiving', value)}
+        onRemove={(index) => removeItem('reasonsForLiving', index)}
+        placeholder="e.g., My family, my goals, my pet"
+        isHighlighted={section === 'reasons-for-living'}
+      />
+
+      <TouchableOpacity style={styles.saveButton} onPress={handleSave} activeOpacity={0.8}>
+        <Save size={20} color="#FFFFFF" />
+        <Text style={styles.saveButtonText}>Save Safety Plan</Text>
+      </TouchableOpacity>
+    </>
+  );
+
+  if (Platform.OS === 'web') {
+    return (
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh',
+        backgroundColor: '#F9FAFB',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          flex: 1,
+          overflowY: 'auto',
+          padding: '20px',
+          paddingBottom: '100px',
+          maxWidth: '800px',
+          width: '100%',
+          margin: '0 auto',
+          boxSizing: 'border-box',
+        }}>
+          {renderContent()}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <KeyboardAvoidingView 
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>
-            Create a personalized safety plan for when you&apos;re in crisis
-          </Text>
-        </View>
-
-        <Section
-          title="Warning Signs"
-          subtitle="What thoughts, feelings, or behaviors tell you a crisis may be developing?"
-          icon={AlertCircle}
-          color="#EF4444"
-          items={editedPlan.warningSigns}
-          onAdd={(value) => addItem('warningSigns', value)}
-          onRemove={(index) => removeItem('warningSigns', index)}
-          placeholder="e.g., Feeling hopeless, isolating myself"
-        />
-
-        <Section
-          title="Coping Strategies"
-          subtitle="What can you do on your own to help yourself not act on thoughts of suicide?"
-          icon={Shield}
-          color="#10B981"
-          items={editedPlan.copingStrategies}
-          onAdd={(value) => addItem('copingStrategies', value)}
-          onRemove={(index) => removeItem('copingStrategies', index)}
-          placeholder="e.g., Take a walk, listen to music"
-        />
-
-        <ContactSection
-          title="Support Contacts"
-          subtitle="Who can you reach out to for support?"
-          icon={Users}
-          color="#3B82F6"
-          contacts={editedPlan.supportContacts}
-          onAdd={addContact}
-          onRemove={removeContact}
-        />
-
-        <Section
-          title="Safe Places"
-          subtitle="Where can you go to feel safe and distract yourself?"
-          icon={MapPin}
-          color="#F59E0B"
-          items={editedPlan.safePlaces}
-          onAdd={(value) => addItem('safePlaces', value)}
-          onRemove={(index) => removeItem('safePlaces', index)}
-          placeholder="e.g., Library, friend's house, park"
-        />
-
-        <Section
-          title="Reasons for Living"
-          subtitle="What are your reasons for living? What gives you hope?"
-          icon={Heart}
-          color="#EC4899"
-          items={editedPlan.reasonsForLiving}
-          onAdd={(value) => addItem('reasonsForLiving', value)}
-          onRemove={(index) => removeItem('reasonsForLiving', index)}
-          placeholder="e.g., My family, my goals, my pet"
-        />
-
-        <TouchableOpacity style={styles.saveButton} onPress={handleSave} activeOpacity={0.8}>
-          <Save size={20} color="#FFFFFF" />
-          <Text style={styles.saveButtonText}>Save Safety Plan</Text>
-        </TouchableOpacity>
+    <View style={styles.container}>
+      <ScrollView 
+        ref={scrollViewRef} 
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={true}
+        keyboardShouldPersistTaps="handled"
+        bounces={false}
+      >
+        {renderContent()}
       </ScrollView>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
 
@@ -157,18 +219,28 @@ interface SectionProps {
   onAdd: (value: string) => void;
   onRemove: (index: number) => void;
   placeholder: string;
+  isHighlighted?: boolean;
 }
 
-function Section({ title, subtitle, icon: Icon, color, items, onAdd, onRemove, placeholder }: SectionProps) {
+const Section = React.forwardRef<View, SectionProps>(({ title, subtitle, icon: Icon, color, items, onAdd, onRemove, placeholder, isHighlighted }, ref) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleAdd = () => {
-    onAdd(inputValue);
-    setInputValue('');
+    if (inputValue.trim()) {
+      onAdd(inputValue);
+      setInputValue('');
+    }
+  };
+
+  const handleKeyPress = (e: any) => {
+    if (e.nativeEvent.key === 'Enter') {
+      e.preventDefault();
+      handleAdd();
+    }
   };
 
   return (
-    <View style={styles.section}>
+    <View ref={ref} style={[styles.section, isHighlighted && styles.highlightedSection]}>
       <View style={styles.sectionHeader}>
         <View style={[styles.iconContainer, { backgroundColor: `${color}15` }]}>
           <Icon size={20} color={color} />
@@ -193,9 +265,12 @@ function Section({ title, subtitle, icon: Icon, color, items, onAdd, onRemove, p
           style={styles.input}
           value={inputValue}
           onChangeText={setInputValue}
+          onKeyPress={handleKeyPress}
           placeholder={placeholder}
           placeholderTextColor="#9CA3AF"
           multiline
+          blurOnSubmit={false}
+          onSubmitEditing={handleAdd}
         />
         <TouchableOpacity 
           style={[styles.addButton, { backgroundColor: color }]} 
@@ -207,7 +282,9 @@ function Section({ title, subtitle, icon: Icon, color, items, onAdd, onRemove, p
       </View>
     </View>
   );
-}
+});
+
+Section.displayName = 'Section';
 
 interface ContactSectionProps {
   title: string;
@@ -217,20 +294,37 @@ interface ContactSectionProps {
   contacts: Contact[];
   onAdd: (name: string, phone: string) => void;
   onRemove: (index: number) => void;
+  isHighlighted?: boolean;
 }
 
-function ContactSection({ title, subtitle, icon: Icon, color, contacts, onAdd, onRemove }: ContactSectionProps) {
+const ContactSection = React.forwardRef<View, ContactSectionProps>(({ title, subtitle, icon: Icon, color, contacts, onAdd, onRemove, isHighlighted }, ref) => {
   const [nameInput, setNameInput] = useState('');
   const [phoneInput, setPhoneInput] = useState('');
 
   const handleAdd = () => {
-    onAdd(nameInput, phoneInput);
-    setNameInput('');
-    setPhoneInput('');
+    if (nameInput.trim()) {
+      onAdd(nameInput, phoneInput);
+      setNameInput('');
+      setPhoneInput('');
+    }
+  };
+
+  const handleNameKeyPress = (e: any) => {
+    if (e.nativeEvent.key === 'Enter') {
+      e.preventDefault();
+      handleAdd();
+    }
+  };
+
+  const handlePhoneKeyPress = (e: any) => {
+    if (e.nativeEvent.key === 'Enter') {
+      e.preventDefault();
+      handleAdd();
+    }
   };
 
   return (
-    <View style={styles.section}>
+    <View ref={ref} style={[styles.section, isHighlighted && styles.highlightedSection]}>
       <View style={styles.sectionHeader}>
         <View style={[styles.iconContainer, { backgroundColor: `${color}15` }]}>
           <Icon size={20} color={color} />
@@ -258,16 +352,22 @@ function ContactSection({ title, subtitle, icon: Icon, color, contacts, onAdd, o
           style={[styles.input, styles.nameInput]}
           value={nameInput}
           onChangeText={setNameInput}
+          onKeyPress={handleNameKeyPress}
+          onSubmitEditing={handleAdd}
           placeholder="Name"
           placeholderTextColor="#9CA3AF"
+          blurOnSubmit={false}
         />
         <TextInput
           style={[styles.input, styles.phoneInputField]}
           value={phoneInput}
           onChangeText={setPhoneInput}
+          onKeyPress={handlePhoneKeyPress}
+          onSubmitEditing={handleAdd}
           placeholder="Phone (optional)"
           placeholderTextColor="#9CA3AF"
           keyboardType="phone-pad"
+          blurOnSubmit={false}
         />
         <TouchableOpacity 
           style={[styles.addButton, { backgroundColor: color }]} 
@@ -279,13 +379,22 @@ function ContactSection({ title, subtitle, icon: Icon, color, contacts, onAdd, o
       </View>
     </View>
   );
-}
+});
+
+ContactSection.displayName = 'ContactSection';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F9FAFB',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
     padding: 20,
+    paddingBottom: 100,
   },
   header: {
     marginBottom: 24,
@@ -402,5 +511,14 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
+  },
+  highlightedSection: {
+    borderWidth: 2,
+    borderColor: '#6B46C1',
+    shadowColor: '#6B46C1',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
   },
 });

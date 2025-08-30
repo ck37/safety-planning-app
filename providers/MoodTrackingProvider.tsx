@@ -35,7 +35,7 @@ export const [MoodTrackingProvider, useMoodTracking] = createContextHook(() => {
     }
   };
 
-  const addMoodEntry = async (mood: number, notes?: string, warningSignsPresent: string[] = [], copingStrategiesUsed: string[] = []) => {
+  const addMoodEntry = async (mood: number, notes?: string, warningSignsPresent: string[] = [], copingStrategiesUsed: string[] = [], photoUri?: string) => {
     const newEntry: MoodEntry = {
       id: Date.now().toString(),
       date: new Date().toISOString().split('T')[0],
@@ -43,7 +43,8 @@ export const [MoodTrackingProvider, useMoodTracking] = createContextHook(() => {
       notes,
       warningSignsPresent,
       copingStrategiesUsed,
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      photoUri
     };
 
     const updatedEntries = [newEntry, ...moodEntries].slice(0, 100); // Keep last 100 entries

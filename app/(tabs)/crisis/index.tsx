@@ -82,7 +82,8 @@ export default function CrisisScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.urgentCard}>
+      <View style={styles.contentWrapper}>
+        <View style={styles.urgentCard}>
         <Text style={styles.urgentTitle}>Need Help Now?</Text>
         <Text style={styles.urgentText}>
           You&apos;re not alone. Reach out to any of these resources for immediate support.
@@ -151,8 +152,9 @@ export default function CrisisScreen() {
         );
       })}
 
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>Remember: Asking for help is a sign of strength</Text>
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Remember: Asking for help is a sign of strength</Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -163,6 +165,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F9FAFB',
   },
+  contentWrapper: {
+    maxWidth: 800,
+    width: '100%',
+    alignSelf: 'center',
+  } as any,
   urgentCard: {
     backgroundColor: '#FEE2E2',
     margin: 20,

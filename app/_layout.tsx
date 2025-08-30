@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { View, StyleSheet, Platform } from "react-native";
 import { SafetyPlanProvider } from "@/providers/SafetyPlanProvider";
 import { MoodTrackingProvider } from "@/providers/MoodTrackingProvider";
 
@@ -39,10 +40,21 @@ export default function RootLayout() {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <SafetyPlanProvider>
           <MoodTrackingProvider>
-            <RootLayoutNav />
+            <View style={styles.rootWrapper}>
+              <RootLayoutNav />
+            </View>
           </MoodTrackingProvider>
         </SafetyPlanProvider>
       </GestureHandlerRootView>
     </QueryClientProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  rootWrapper: {
+    maxWidth: Platform.OS === 'web' ? 800 : undefined,
+    width: '100%',
+    alignSelf: 'center',
+    flex: 1,
+  },
+});

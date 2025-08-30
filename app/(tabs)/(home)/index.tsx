@@ -86,12 +86,13 @@ export default function HomeScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <LinearGradient
-        colors={['#6B46C1', '#9333EA']}
-        style={styles.header}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      >
+      <View style={styles.contentWrapper}>
+        <LinearGradient
+          colors={['#6B46C1', '#9333EA']}
+          style={styles.header}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+        >
         <View style={styles.headerContent}>
           <Text style={styles.headerTitle}>You Matter</Text>
           <Text style={styles.headerSubtitle}>Your safety plan is here when you need it</Text>
@@ -140,12 +141,20 @@ export default function HomeScreen() {
         {sections.map((section) => {
           const Icon = section.icon;
           return (
-            <View key={section.id} style={styles.section}>
+            <TouchableOpacity
+              key={section.id}
+              style={styles.section}
+              onPress={() => router.push(`/edit-plan?section=${section.id}`)}
+              activeOpacity={0.7}
+            >
               <View style={styles.sectionHeader}>
                 <View style={[styles.iconContainer, { backgroundColor: section.bgColor }]}>
                   <Icon size={20} color={section.color} />
                 </View>
                 <Text style={styles.sectionTitle}>{section.title}</Text>
+                <View style={styles.editIndicator}>
+                  <Edit3 size={16} color="#9CA3AF" />
+                </View>
               </View>
               
               {section.items.length > 0 ? (
@@ -160,14 +169,15 @@ export default function HomeScreen() {
               ) : (
                 <Text style={styles.emptyText}>{section.emptyText}</Text>
               )}
-            </View>
+            </TouchableOpacity>
           );
         })}
       </View>
 
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>Remember: This too shall pass</Text>
-        <Text style={styles.footerSubtext}>You&apos;ve survived 100% of your worst days</Text>
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Remember: This too shall pass</Text>
+          <Text style={styles.footerSubtext}>You&apos;ve survived 100% of your worst days</Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -178,6 +188,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F9FAFB',
   },
+  contentWrapper: {
+    maxWidth: 800,
+    width: '100%',
+    alignSelf: 'center',
+  } as any,
   header: {
     paddingTop: 20,
     paddingBottom: 30,
@@ -293,6 +308,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     color: '#1F2937',
+    flex: 1,
+  },
+  editIndicator: {
+    padding: 4,
   },
   itemsList: {
     gap: 8,
