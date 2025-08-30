@@ -3,9 +3,13 @@
  * These tests ensure the app configuration and basic setup is correct
  */
 
+import appConfig from '../../app.json';
+import packageJson from '../../package.json';
+import tsConfig from '../../tsconfig.json';
+import jestConfig from '../../jest.config.js';
+
 describe('Build Verification', () => {
   it('should have valid app configuration', () => {
-    const appConfig = require('../../app.json');
     
     expect(appConfig).toBeDefined();
     expect(appConfig.expo).toBeDefined();
@@ -15,8 +19,6 @@ describe('Build Verification', () => {
   });
 
   it('should have valid package.json', () => {
-    const packageJson = require('../../package.json');
-    
     expect(packageJson).toBeDefined();
     expect(packageJson.name).toBeDefined();
     expect(packageJson.version).toBeDefined();
@@ -27,16 +29,12 @@ describe('Build Verification', () => {
   });
 
   it('should have TypeScript configuration', () => {
-    const tsConfig = require('../../tsconfig.json');
-    
     expect(tsConfig).toBeDefined();
     expect(tsConfig.compilerOptions).toBeDefined();
     expect(tsConfig.extends).toBeDefined();
   });
 
   it('should have Jest configuration', () => {
-    const jestConfig = require('../../jest.config.js');
-    
     expect(jestConfig).toBeDefined();
     expect(jestConfig.preset).toBe('ts-jest');
     expect(jestConfig.moduleNameMapper).toBeDefined();
@@ -45,8 +43,6 @@ describe('Build Verification', () => {
   });
 
   it('should have proper test scripts in package.json', () => {
-    const packageJson = require('../../package.json');
-    
     expect(packageJson.scripts.test).toBeDefined();
     expect(packageJson.scripts['test:coverage']).toBeDefined();
     expect(packageJson.scripts['test:ci']).toBeDefined();
