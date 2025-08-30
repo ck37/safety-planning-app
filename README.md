@@ -1,4 +1,4 @@
-# Suicide Safety Planning App
+# Safety Planning App: Ready for a Crisis
 
 [![CI](https://github.com/ck37/suicide-safety-planning-app/actions/workflows/ci.yml/badge.svg)](https://github.com/ck37/suicide-safety-planning-app/actions/workflows/ci.yml)
 
