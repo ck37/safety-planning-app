@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import createContextHook from '@nkzw/create-context-hook';
-import { SafetyPlan, Contact } from '@/types/SafetyPlan';
+import { SafetyPlan } from '@/types/SafetyPlan';
 
 const STORAGE_KEY = 'safety_plan';
 

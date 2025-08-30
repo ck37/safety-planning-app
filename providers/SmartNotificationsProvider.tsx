@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Notifications from 'expo-notifications';
-import { Platform } from 'react-native';
 import createContextHook from '@nkzw/create-context-hook';
 import { 
   NotificationPreferences, 
   SmartNotification, 
-  NotificationTrigger,
   NotificationAnalytics 
 } from '@/types/SmartNotifications';
 import { useMoodTracking } from './MoodTrackingProvider';
@@ -65,8 +63,8 @@ export const [SmartNotificationsProvider, useSmartNotifications] = createContext
   const [permissionStatus, setPermissionStatus] = useState<string>('undetermined');
   
   const moodTracking = useMoodTracking();
-  const notificationListener = useRef<Notifications.Subscription>();
-  const responseListener = useRef<Notifications.Subscription>();
+  const notificationListener = useRef<Notifications.Subscription | null>(null);
+  const responseListener = useRef<Notifications.Subscription | null>(null);
 
   useEffect(() => {
     initializeNotifications();
@@ -91,7 +89,7 @@ export const [SmartNotificationsProvider, useSmartNotifications] = createContext
     if (!isLoading && moodTracking && !moodTracking.isLoading) {
       checkForSmartTriggers();
     }
-  }, [moodTracking?.moodEntries, moodTracking?.crisisAlerts, isLoading]);
+  }, [moodTracking?.moodEntries, moodTracking?.crisisAlerts, isLoading, moodTracking]);
 
   const initializeNotifications = async () => {
     try {
@@ -296,7 +294,6 @@ export const [SmartNotificationsProvider, useSmartNotifications] = createContext
     if (!moodTracking || !preferences.enabled) return;
 
     const moodTrend = moodTracking.getMoodTrend();
-    const activeAlerts = moodTracking.getActiveAlerts();
     const lastEntry = moodTracking.moodEntries[0];
 
     // Check for inactivity (no mood entry in 2+ days)

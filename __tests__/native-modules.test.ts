@@ -61,7 +61,7 @@ describe('Native Modules Error Handling', () => {
   describe('Biometric Utilities Error Handling', () => {
     it('should handle missing LocalAuthentication module gracefully', async () => {
       // Test that when LocalAuthentication is undefined, functions handle it gracefully
-      const LocalAuthentication = require('expo-local-authentication');
+      const LocalAuthentication = await import('expo-local-authentication');
       
       // Verify the module is mocked as unavailable
       expect(LocalAuthentication.hasHardwareAsync).toBeUndefined();
@@ -96,8 +96,8 @@ describe('Native Modules Error Handling', () => {
   });
 
   describe('Speech Module Error Handling', () => {
-    it('should handle missing Speech module gracefully', () => {
-      const Speech = require('expo-speech');
+    it('should handle missing Speech module gracefully', async () => {
+      const Speech = await import('expo-speech');
       
       // Verify the module is mocked as unavailable
       expect(Speech.speak).toBeUndefined();
@@ -106,9 +106,9 @@ describe('Native Modules Error Handling', () => {
   });
 
   describe('Module Availability Checks', () => {
-    it('should detect when native modules are unavailable', () => {
-      const LocalAuthentication = require('expo-local-authentication');
-      const Speech = require('expo-speech');
+    it('should detect when native modules are unavailable', async () => {
+      const LocalAuthentication = await import('expo-local-authentication');
+      const Speech = await import('expo-speech');
 
       // Test that we can detect unavailable modules
       const isLocalAuthAvailable = LocalAuthentication && typeof LocalAuthentication.hasHardwareAsync === 'function';
@@ -118,16 +118,16 @@ describe('Native Modules Error Handling', () => {
       expect(isSpeechAvailable).toBe(false);
     });
 
-    it('should handle module checks without crashing', () => {
+    it('should handle module checks without crashing', async () => {
       // These checks should not throw errors
-      expect(() => {
-        const LocalAuthentication = require('expo-local-authentication');
+      await expect(async () => {
+        const LocalAuthentication = await import('expo-local-authentication');
         const hasFunction = LocalAuthentication && typeof LocalAuthentication.hasHardwareAsync === 'function';
         return hasFunction;
       }).not.toThrow();
 
-      expect(() => {
-        const Speech = require('expo-speech');
+      await expect(async () => {
+        const Speech = await import('expo-speech');
         const hasFunction = Speech && typeof Speech.speak === 'function';
         return hasFunction;
       }).not.toThrow();
@@ -157,10 +157,10 @@ describe('Native Modules Error Handling', () => {
       }
     });
 
-    it('should provide fallback behavior when modules are unavailable', () => {
+    it('should provide fallback behavior when modules are unavailable', async () => {
       // Test that the app can continue functioning when native modules are unavailable
-      const LocalAuthentication = require('expo-local-authentication');
-      const Speech = require('expo-speech');
+      const LocalAuthentication = await import('expo-local-authentication');
+      const Speech = await import('expo-speech');
 
       // Simulate checking for module availability and providing fallbacks
       const biometricFallback = !LocalAuthentication || typeof LocalAuthentication.hasHardwareAsync !== 'function';

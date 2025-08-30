@@ -9,8 +9,8 @@ import { join } from 'path';
 describe('Code Quality - Linting', () => {
   it('should pass ESLint checks', () => {
     try {
-      // Run expo lint which uses the project's ESLint configuration
-      const result = execSync('npx expo lint -- --format json', {
+      // Run eslint directly since expo lint may not return valid JSON
+      const result = execSync('npx eslint . --ext .ts,.tsx,.js,.jsx --format json', {
         cwd: process.cwd(),
         encoding: 'utf8',
         stdio: 'pipe'
@@ -39,7 +39,7 @@ describe('Code Quality - Linting', () => {
           `Files with issues: ${filesWithIssues.length}`,
           '',
           'Run "npm run lint" to see detailed output.',
-          'Run "expo lint --fix" to automatically fix some issues.'
+          'Run "npx eslint . --ext .ts,.tsx,.js,.jsx --fix" to automatically fix some issues.'
         ].join('\n');
 
         throw new Error(errorMessage);
@@ -49,7 +49,7 @@ describe('Code Quality - Linting', () => {
       expect(totalErrors).toBe(0);
       
     } catch (error: any) {
-      // Handle case where expo lint command fails
+      // Handle case where eslint command fails
       if (error.status !== 0 && error.stdout) {
         try {
           const lintResults = JSON.parse(error.stdout);
@@ -65,11 +65,11 @@ describe('Code Quality - Linting', () => {
             `ESLint found ${totalErrors} error(s) and ${totalWarnings} warning(s)`,
             '',
             'Run "npm run lint" to see detailed output.',
-            'Run "expo lint --fix" to automatically fix some issues.'
+            'Run "npx eslint . --ext .ts,.tsx,.js,.jsx --fix" to automatically fix some issues.'
           ].join('\n');
 
           throw new Error(errorMessage);
-        } catch (parseError) {
+        } catch {
           // If we can't parse the output, throw the original error
           throw new Error(`Linting failed: ${error.message}`);
         }
@@ -79,15 +79,15 @@ describe('Code Quality - Linting', () => {
     }
   });
 
-  it('should have ESLint configuration file', () => {
-    const fs = require('fs');
+  it('should have ESLint configuration file', async () => {
+    const fs = await import('fs');
     const configExists = fs.existsSync(join(process.cwd(), 'eslint.config.js'));
     expect(configExists).toBe(true);
   });
 
-  it('should have lint script in package.json', () => {
-    const packageJson = require(join(process.cwd(), 'package.json'));
-    expect(packageJson.scripts).toHaveProperty('lint');
-    expect(packageJson.scripts.lint).toBeTruthy();
+  it('should have lint script in package.json', async () => {
+    const packageJson = await import(join(process.cwd(), 'package.json'));
+    expect(packageJson.default.scripts).toHaveProperty('lint');
+    expect(packageJson.default.scripts.lint).toBeTruthy();
   });
 });
