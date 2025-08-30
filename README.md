@@ -102,6 +102,12 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 - `bun run start-web` - Start web development server
 - `bun run start-web-dev` - Start web server with debug logging
 - `bun run lint` - Run ESLint for code quality checks
+- `bun run test` - Run the test suite
+- `bun run test:watch` - Run tests in watch mode
+- `bun run test:coverage` - Run tests with coverage report
+- `bun run test:ci` - Run tests for CI (no watch, with coverage)
+- `bun run type-check` - Run TypeScript type checking
+- `bun run build-check` - Run full build verification (lint + test + type-check)
 
 ### Troubleshooting
 
