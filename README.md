@@ -1,5 +1,7 @@
 # Suicide Safety Planning App
 
+[![CI](https://github.com/ck37/suicide-safety-planning-app/actions/workflows/ci.yml/badge.svg)](https://github.com/ck37/suicide-safety-planning-app/actions/workflows/ci.yml)
+
 A compassionate, evidence-based mobile application designed to help individuals create and maintain personalized safety plans for mental health crisis situations.
 
 <img src="assets/images/app-screenshot.png" alt="App Screenshot" width="200" align="right" />
