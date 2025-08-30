@@ -89,7 +89,7 @@ This document outlines potential improvements and new features that could enhanc
 ## 🌍 Accessibility & Inclusion
 
 ### Language & Cultural Support
-- **Multi-language Support**: Safety plans and resources in multiple languages
+- **Multi-language Support**: Safety plans and resources in multiple languages [📋 **GitHub Issue #2**](https://github.com/ck37/suicide-safety-planning-app/issues/2)
 - **Cultural Competency**: Resources tailored to different cultural backgrounds and beliefs
 - **Religious/Spiritual Integration**: Option to include faith-based coping strategies and resources
 - **LGBTQ+ Specific Resources**: Specialized resources for LGBTQ+ individuals
