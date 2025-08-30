@@ -16,7 +16,8 @@ import {
   Sparkles,
   Shield,
   Edit3,
-  Phone
+  Phone,
+  Settings
 } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useSafetyPlan } from '@/providers/SafetyPlanProvider';
@@ -115,6 +116,15 @@ export default function HomeScreen() {
         >
           <Edit3 size={18} color="#6B46C1" />
           <Text style={styles.editButtonText}>Edit Plan</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={styles.securityButton}
+          onPress={() => router.push('/security-settings')}
+          activeOpacity={0.7}
+        >
+          <Shield size={18} color="#6B46C1" />
+          <Text style={styles.securityButtonText}>Security</Text>
         </TouchableOpacity>
         
         <VoiceReader size="large" />
@@ -227,6 +237,25 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   editButtonText: {
+    color: '#6B46C1',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  securityButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    gap: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  securityButtonText: {
     color: '#6B46C1',
     fontSize: 14,
     fontWeight: '600',
