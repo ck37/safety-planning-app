@@ -102,7 +102,7 @@ export default function MoodTracker() {
               <View style={[styles.moodCircle, { backgroundColor: getMoodColor(todayEntry.mood) }]}>
                 <Text style={styles.moodNumber}>{todayEntry.mood}</Text>
               </View>
-              <Text style={styles.moodLabel}>Today's mood</Text>
+              <Text style={styles.moodLabel}>Today&apos;s mood</Text>
             </View>
             <TouchableOpacity
               style={styles.updateButton}
@@ -204,7 +204,7 @@ export default function MoodTracker() {
             {/* Coping Strategies */}
             {safetyPlan.copingStrategies.length > 0 && (
               <View style={styles.section}>
-                <Text style={styles.sectionTitle}>Coping strategies you've used today?</Text>
+                <Text style={styles.sectionTitle}>Coping strategies you&apos;ve used today?</Text>
                 <View style={styles.optionsGrid}>
                   {safetyPlan.copingStrategies.map((strategy, index) => (
                     <TouchableOpacity

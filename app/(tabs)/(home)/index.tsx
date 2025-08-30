@@ -20,7 +20,6 @@ import {
 } from 'lucide-react-native';
 import { router } from 'expo-router';
 import { useSafetyPlan } from '@/providers/SafetyPlanProvider';
-import { useMoodTracking } from '@/providers/MoodTrackingProvider';
 import QuickCrisisButton from '@/components/QuickCrisisButton';
 import MoodTracker from '@/components/MoodTracker';
 import VoiceReader from '@/components/VoiceReader';
