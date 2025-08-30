@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Text, Switch, TouchableOpacity, ScrollView, Alert, StyleSheet } from 'react-native';
 import { useSmartNotifications } from '@/providers/SmartNotificationsProvider';
 import { NotificationPreferences } from '@/types/SmartNotifications';
 
@@ -39,23 +39,23 @@ const TimePicker: React.FC<TimePickerProps> = ({ time, onTimeChange, label }) =>
   };
 
   return (
-    <View className="flex-row items-center justify-between py-2">
-      <Text className="text-gray-700 font-medium">{label}</Text>
-      <View className="flex-row items-center space-x-2">
+    <View style={styles.timePickerRow}>
+      <Text style={styles.timePickerLabel}>{label}</Text>
+      <View style={styles.timePickerControls}>
         <TouchableOpacity
           onPress={() => adjustTime(-1, 0)}
-          className="bg-gray-200 rounded-full w-8 h-8 items-center justify-center"
+          style={styles.timeButton}
         >
-          <Text className="text-gray-600 font-bold">-</Text>
+          <Text style={styles.timeButtonText}>-</Text>
         </TouchableOpacity>
-        <Text className="text-lg font-semibold min-w-[80px] text-center">
+        <Text style={styles.timeDisplay}>
           {formatTime(time)}
         </Text>
         <TouchableOpacity
           onPress={() => adjustTime(1, 0)}
-          className="bg-gray-200 rounded-full w-8 h-8 items-center justify-center"
+          style={styles.timeButton}
         >
-          <Text className="text-gray-600 font-bold">+</Text>
+          <Text style={styles.timeButtonText}>+</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -122,35 +122,35 @@ export const NotificationSettings: React.FC = () => {
 
   if (isLoading) {
     return (
-      <View className="flex-1 items-center justify-center">
-        <Text className="text-gray-500">Loading notification settings...</Text>
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>Loading notification settings...</Text>
       </View>
     );
   }
 
   return (
-    <ScrollView className="flex-1 bg-white">
-      <View className="p-6">
-        <Text className="text-2xl font-bold text-gray-900 mb-6">Smart Notifications</Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.title}>Smart Notifications</Text>
         
         {/* Permission Status */}
-        <View className="mb-6 p-4 bg-gray-50 rounded-lg">
-          <Text className="text-sm font-medium text-gray-700 mb-2">Permission Status</Text>
-          <Text className={`text-sm ${permissionStatus === 'granted' ? 'text-green-600' : 'text-red-600'}`}>
+        <View style={styles.permissionContainer}>
+          <Text style={styles.permissionTitle}>Permission Status</Text>
+          <Text style={[styles.permissionStatus, { color: permissionStatus === 'granted' ? '#10b981' : '#ef4444' }]}>
             {permissionStatus === 'granted' ? '✓ Notifications Enabled' : '✗ Notifications Disabled'}
           </Text>
           {permissionStatus !== 'granted' && (
-            <Text className="text-xs text-gray-500 mt-1">
+            <Text style={styles.permissionHelp}>
               Please enable notifications in your device settings to receive smart reminders.
             </Text>
           )}
         </View>
 
         {/* Master Toggle */}
-        <View className="flex-row items-center justify-between py-4 border-b border-gray-200">
-          <View className="flex-1">
-            <Text className="text-lg font-semibold text-gray-900">Enable Smart Notifications</Text>
-            <Text className="text-sm text-gray-500">Turn on intelligent reminders and support messages</Text>
+        <View style={styles.settingRow}>
+          <View style={styles.settingInfo}>
+            <Text style={styles.settingTitle}>Enable Smart Notifications</Text>
+            <Text style={styles.settingDescription}>Turn on intelligent reminders and support messages</Text>
           </View>
           <Switch
             value={localPreferences.enabled}
@@ -163,11 +163,11 @@ export const NotificationSettings: React.FC = () => {
         {localPreferences.enabled && (
           <>
             {/* Daily Check-in */}
-            <View className="py-4 border-b border-gray-200">
-              <View className="flex-row items-center justify-between mb-3">
-                <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-900">Daily Check-in</Text>
-                  <Text className="text-sm text-gray-500">Daily reminder to track your mood</Text>
+            <View style={styles.settingSection}>
+              <View style={styles.settingRow}>
+                <View style={styles.settingInfo}>
+                  <Text style={styles.settingTitle}>Daily Check-in</Text>
+                  <Text style={styles.settingDescription}>Daily reminder to track your mood</Text>
                 </View>
                 <Switch
                   value={localPreferences.dailyCheckIn.enabled}
@@ -194,11 +194,11 @@ export const NotificationSettings: React.FC = () => {
             </View>
 
             {/* Mood Reminders */}
-            <View className="py-4 border-b border-gray-200">
-              <View className="flex-row items-center justify-between mb-3">
-                <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-900">Mood Reminders</Text>
-                  <Text className="text-sm text-gray-500">Regular reminders to check your mental health</Text>
+            <View style={styles.settingSection}>
+              <View style={styles.settingRow}>
+                <View style={styles.settingInfo}>
+                  <Text style={styles.settingTitle}>Mood Reminders</Text>
+                  <Text style={styles.settingDescription}>Regular reminders to check your mental health</Text>
                 </View>
                 <Switch
                   value={localPreferences.moodReminders.enabled}
@@ -214,7 +214,7 @@ export const NotificationSettings: React.FC = () => {
               {localPreferences.moodReminders.enabled && (
                 <View>
                   {localPreferences.moodReminders.times.map((time, index) => (
-                    <View key={index} className="flex-row items-center justify-between py-2">
+                    <View key={index} style={styles.reminderTimeRow}>
                       <TimePicker
                         time={time}
                         onTimeChange={(newTime) => updateMoodReminderTime(index, newTime)}
@@ -223,9 +223,9 @@ export const NotificationSettings: React.FC = () => {
                       {localPreferences.moodReminders.times.length > 1 && (
                         <TouchableOpacity
                           onPress={() => removeMoodReminderTime(index)}
-                          className="ml-2 bg-red-100 rounded-full w-8 h-8 items-center justify-center"
+                          style={styles.removeButton}
                         >
-                          <Text className="text-red-600 font-bold">×</Text>
+                          <Text style={styles.removeButtonText}>×</Text>
                         </TouchableOpacity>
                       )}
                     </View>
@@ -233,9 +233,9 @@ export const NotificationSettings: React.FC = () => {
                   {localPreferences.moodReminders.times.length < 4 && (
                     <TouchableOpacity
                       onPress={addMoodReminderTime}
-                      className="mt-2 bg-blue-100 rounded-lg py-2 px-4 items-center"
+                      style={styles.addButton}
                     >
-                      <Text className="text-blue-600 font-medium">+ Add Another Time</Text>
+                      <Text style={styles.addButtonText}>+ Add Another Time</Text>
                     </TouchableOpacity>
                   )}
                 </View>
@@ -243,11 +243,11 @@ export const NotificationSettings: React.FC = () => {
             </View>
 
             {/* Crisis Support */}
-            <View className="py-4 border-b border-gray-200">
-              <View className="flex-row items-center justify-between mb-3">
-                <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-900">Crisis Support</Text>
-                  <Text className="text-sm text-gray-500">Proactive support during difficult times</Text>
+            <View style={styles.settingSection}>
+              <View style={styles.settingRow}>
+                <View style={styles.settingInfo}>
+                  <Text style={styles.settingTitle}>Crisis Support</Text>
+                  <Text style={styles.settingDescription}>Proactive support during difficult times</Text>
                 </View>
                 <Switch
                   value={localPreferences.crisisSupport.enabled}
@@ -261,8 +261,8 @@ export const NotificationSettings: React.FC = () => {
                 />
               </View>
               {localPreferences.crisisSupport.enabled && (
-                <View className="flex-row items-center justify-between py-2">
-                  <Text className="text-gray-700">Proactive Reminders</Text>
+                <View style={styles.subSettingRow}>
+                  <Text style={styles.subSettingLabel}>Proactive Reminders</Text>
                   <Switch
                     value={localPreferences.crisisSupport.proactiveReminders}
                     onValueChange={(value) =>
@@ -278,11 +278,11 @@ export const NotificationSettings: React.FC = () => {
             </View>
 
             {/* Safety Plan Reminders */}
-            <View className="py-4 border-b border-gray-200">
-              <View className="flex-row items-center justify-between mb-3">
-                <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-900">Safety Plan Reviews</Text>
-                  <Text className="text-sm text-gray-500">Reminders to update your safety plan</Text>
+            <View style={styles.settingSection}>
+              <View style={styles.settingRow}>
+                <View style={styles.settingInfo}>
+                  <Text style={styles.settingTitle}>Safety Plan Reviews</Text>
+                  <Text style={styles.settingDescription}>Reminders to update your safety plan</Text>
                 </View>
                 <Switch
                   value={localPreferences.safetyPlanReminders.enabled}
@@ -296,27 +296,25 @@ export const NotificationSettings: React.FC = () => {
                 />
               </View>
               {localPreferences.safetyPlanReminders.enabled && (
-                <View className="py-2">
-                  <Text className="text-gray-700 mb-2">Review Frequency</Text>
-                  <View className="flex-row space-x-2">
+                <View style={styles.frequencyContainer}>
+                  <Text style={styles.frequencyLabel}>Review Frequency</Text>
+                  <View style={styles.frequencyButtons}>
                     <TouchableOpacity
                       onPress={() =>
                         handlePreferenceChange({
                           safetyPlanReminders: { ...localPreferences.safetyPlanReminders, reviewFrequency: 'weekly' }
                         })
                       }
-                      className={`flex-1 py-2 px-4 rounded-lg ${
-                        localPreferences.safetyPlanReminders.reviewFrequency === 'weekly'
-                          ? 'bg-blue-500'
-                          : 'bg-gray-200'
-                      }`}
+                      style={[
+                        styles.frequencyButton,
+                        localPreferences.safetyPlanReminders.reviewFrequency === 'weekly' && styles.frequencyButtonActive
+                      ]}
                     >
                       <Text
-                        className={`text-center font-medium ${
-                          localPreferences.safetyPlanReminders.reviewFrequency === 'weekly'
-                            ? 'text-white'
-                            : 'text-gray-700'
-                        }`}
+                        style={[
+                          styles.frequencyButtonText,
+                          localPreferences.safetyPlanReminders.reviewFrequency === 'weekly' && styles.frequencyButtonTextActive
+                        ]}
                       >
                         Weekly
                       </Text>
@@ -327,18 +325,16 @@ export const NotificationSettings: React.FC = () => {
                           safetyPlanReminders: { ...localPreferences.safetyPlanReminders, reviewFrequency: 'monthly' }
                         })
                       }
-                      className={`flex-1 py-2 px-4 rounded-lg ${
-                        localPreferences.safetyPlanReminders.reviewFrequency === 'monthly'
-                          ? 'bg-blue-500'
-                          : 'bg-gray-200'
-                      }`}
+                      style={[
+                        styles.frequencyButton,
+                        localPreferences.safetyPlanReminders.reviewFrequency === 'monthly' && styles.frequencyButtonActive
+                      ]}
                     >
                       <Text
-                        className={`text-center font-medium ${
-                          localPreferences.safetyPlanReminders.reviewFrequency === 'monthly'
-                            ? 'text-white'
-                            : 'text-gray-700'
-                        }`}
+                        style={[
+                          styles.frequencyButtonText,
+                          localPreferences.safetyPlanReminders.reviewFrequency === 'monthly' && styles.frequencyButtonTextActive
+                        ]}
                       >
                         Monthly
                       </Text>
@@ -349,11 +345,11 @@ export const NotificationSettings: React.FC = () => {
             </View>
 
             {/* Encouragement Messages */}
-            <View className="py-4 border-b border-gray-200">
-              <View className="flex-row items-center justify-between mb-3">
-                <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-900">Encouragement Messages</Text>
-                  <Text className="text-sm text-gray-500">Positive messages when you&apos;re doing well</Text>
+            <View style={styles.settingSection}>
+              <View style={styles.settingRow}>
+                <View style={styles.settingInfo}>
+                  <Text style={styles.settingTitle}>Encouragement Messages</Text>
+                  <Text style={styles.settingDescription}>Positive messages when you're doing well</Text>
                 </View>
                 <Switch
                   value={localPreferences.encouragementMessages.enabled}
@@ -369,32 +365,32 @@ export const NotificationSettings: React.FC = () => {
             </View>
 
             {/* Analytics */}
-            <View className="py-4 border-b border-gray-200">
-              <Text className="text-lg font-semibold text-gray-900 mb-3">Notification Analytics</Text>
-              <View className="bg-gray-50 rounded-lg p-4">
-                <View className="flex-row justify-between mb-2">
-                  <Text className="text-gray-600">Total Sent</Text>
-                  <Text className="font-semibold">{analytics.totalSent}</Text>
+            <View style={styles.settingSection}>
+              <Text style={styles.analyticsTitle}>Notification Analytics</Text>
+              <View style={styles.analyticsContainer}>
+                <View style={styles.analyticsRow}>
+                  <Text style={styles.analyticsLabel}>Total Sent</Text>
+                  <Text style={styles.analyticsValue}>{analytics.totalSent}</Text>
                 </View>
-                <View className="flex-row justify-between mb-2">
-                  <Text className="text-gray-600">Total Opened</Text>
-                  <Text className="font-semibold">{analytics.totalOpened}</Text>
+                <View style={styles.analyticsRow}>
+                  <Text style={styles.analyticsLabel}>Total Opened</Text>
+                  <Text style={styles.analyticsValue}>{analytics.totalOpened}</Text>
                 </View>
-                <View className="flex-row justify-between">
-                  <Text className="text-gray-600">Open Rate</Text>
-                  <Text className="font-semibold">{analytics.openRate.toFixed(1)}%</Text>
+                <View style={styles.analyticsRow}>
+                  <Text style={styles.analyticsLabel}>Open Rate</Text>
+                  <Text style={styles.analyticsValue}>{analytics.openRate.toFixed(1)}%</Text>
                 </View>
               </View>
             </View>
 
             {/* Test Notification */}
-            <View className="py-6">
+            <View style={styles.testSection}>
               <TouchableOpacity
                 onPress={handleTestNotification}
-                className="bg-blue-500 rounded-lg py-3 px-6 items-center"
+                style={[styles.testButton, permissionStatus !== 'granted' && styles.testButtonDisabled]}
                 disabled={permissionStatus !== 'granted'}
               >
-                <Text className="text-white font-semibold text-lg">Send Test Notification</Text>
+                <Text style={styles.testButtonText}>Send Test Notification</Text>
               </TouchableOpacity>
             </View>
           </>
@@ -403,5 +399,216 @@ export const NotificationSettings: React.FC = () => {
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  content: {
+    padding: 24,
+  },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  loadingText: {
+    color: '#6b7280',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#111827',
+    marginBottom: 24,
+  },
+  permissionContainer: {
+    marginBottom: 24,
+    padding: 16,
+    backgroundColor: '#f9fafb',
+    borderRadius: 8,
+  },
+  permissionTitle: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#374151',
+    marginBottom: 8,
+  },
+  permissionStatus: {
+    fontSize: 14,
+  },
+  permissionHelp: {
+    fontSize: 12,
+    color: '#6b7280',
+    marginTop: 4,
+  },
+  settingRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e5e7eb',
+  },
+  settingSection: {
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e5e7eb',
+  },
+  settingInfo: {
+    flex: 1,
+  },
+  settingTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#111827',
+  },
+  settingDescription: {
+    fontSize: 14,
+    color: '#6b7280',
+  },
+  subSettingRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+  },
+  subSettingLabel: {
+    color: '#374151',
+  },
+  timePickerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+  },
+  timePickerLabel: {
+    color: '#374151',
+    fontWeight: '500',
+  },
+  timePickerControls: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  timeButton: {
+    backgroundColor: '#e5e7eb',
+    borderRadius: 16,
+    width: 32,
+    height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  timeButtonText: {
+    color: '#4b5563',
+    fontWeight: 'bold',
+  },
+  timeDisplay: {
+    fontSize: 18,
+    fontWeight: '600',
+    minWidth: 80,
+    textAlign: 'center',
+    marginHorizontal: 8,
+  },
+  reminderTimeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+  },
+  removeButton: {
+    marginLeft: 8,
+    backgroundColor: '#fecaca',
+    borderRadius: 16,
+    width: 32,
+    height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  removeButtonText: {
+    color: '#dc2626',
+    fontWeight: 'bold',
+  },
+  addButton: {
+    marginTop: 8,
+    backgroundColor: '#dbeafe',
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    alignItems: 'center',
+  },
+  addButtonText: {
+    color: '#2563eb',
+    fontWeight: '500',
+  },
+  frequencyContainer: {
+    paddingVertical: 8,
+  },
+  frequencyLabel: {
+    color: '#374151',
+    marginBottom: 8,
+  },
+  frequencyButtons: {
+    flexDirection: 'row',
+  },
+  frequencyButton: {
+    flex: 1,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    backgroundColor: '#e5e7eb',
+    marginHorizontal: 4,
+  },
+  frequencyButtonActive: {
+    backgroundColor: '#3b82f6',
+  },
+  frequencyButtonText: {
+    textAlign: 'center',
+    fontWeight: '500',
+    color: '#374151',
+  },
+  frequencyButtonTextActive: {
+    color: '#ffffff',
+  },
+  analyticsTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#111827',
+    marginBottom: 12,
+  },
+  analyticsContainer: {
+    backgroundColor: '#f9fafb',
+    borderRadius: 8,
+    padding: 16,
+  },
+  analyticsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  analyticsLabel: {
+    color: '#4b5563',
+  },
+  analyticsValue: {
+    fontWeight: '600',
+  },
+  testSection: {
+    paddingVertical: 24,
+  },
+  testButton: {
+    backgroundColor: '#3b82f6',
+    borderRadius: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+  },
+  testButtonDisabled: {
+    backgroundColor: '#9ca3af',
+  },
+  testButtonText: {
+    color: '#ffffff',
+    fontWeight: '600',
+    fontSize: 18,
+  },
+});
 
 export default NotificationSettings;
