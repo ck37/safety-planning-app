@@ -46,7 +46,13 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 - [Node.js](https://nodejs.org/) (v18 or later)
 - [Bun package manager](https://bun.sh/)
 - [Expo CLI](https://docs.expo.dev/get-started/installation/)
-- [iOS Simulator](https://developer.apple.com/xcode/) (for iOS development) or [Android Studio](https://developer.android.com/studio) (for Android development)
+
+**For Physical Device Testing:**
+- [Expo Go app](https://expo.dev/client) on your iOS or Android device
+
+**For Simulator/Emulator Development:**
+- [Xcode](https://developer.apple.com/xcode/) (for iOS Simulator on macOS)
+- [Android Studio](https://developer.android.com/studio) (for Android Emulator)
 
 ### Installation
 
@@ -66,7 +72,22 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
    bun run start
    ```
 
-4. **Run on specific platforms**
+4. **Run the app**
+   
+   After starting the development server, you have several options:
+
+   **On Physical Device:**
+   - Install [Expo Go](https://expo.dev/client) on your phone
+   - Scan the QR code displayed in your terminal with:
+     - **iOS**: Camera app or Expo Go app
+     - **Android**: Expo Go app
+   
+   **On Simulator/Emulator:**
+   - Press `i` in the terminal to open iOS Simulator
+   - Press `a` in the terminal to open Android Emulator
+   - Press `w` in the terminal to open in web browser
+
+5. **Platform-specific commands**
    ```bash
    # Web development
    bun run start-web
@@ -81,6 +102,16 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 - `bun run start-web` - Start web development server
 - `bun run start-web-dev` - Start web server with debug logging
 - `bun run lint` - Run ESLint for code quality checks
+
+### Troubleshooting
+
+**Common Issues:**
+
+- **QR Code not scanning**: Ensure your phone and computer are on the same WiFi network
+- **Metro bundler issues**: Try clearing the cache with `bun run start --clear`
+- **iOS Simulator not opening**: Make sure Xcode is installed and iOS Simulator is available
+- **Android Emulator issues**: Ensure Android Studio is properly configured with an AVD
+- **Port conflicts**: The default port is 8081; if occupied, Expo will automatically use another port
 
 ## 📱 Usage
 
