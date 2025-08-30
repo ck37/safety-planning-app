@@ -2,6 +2,8 @@
 
 A compassionate, evidence-based mobile application designed to help individuals create and maintain personalized safety plans for mental health crisis situations.
 
+<img src="assets/images/app-screenshot.png" alt="App Screenshot" width="200" align="right" />
+
 ## 🌟 Overview
 
 This app provides a digital implementation of the Stanley-Brown Safety Planning Intervention, a widely recognized suicide prevention tool used by mental health professionals. It empowers users to create personalized safety plans that can be accessed anytime, helping them navigate through difficult moments and connect with support resources.
