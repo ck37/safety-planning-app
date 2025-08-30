@@ -30,6 +30,10 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 - **Privacy-Focused** - All data remains on the user's device
 - **Intuitive Interface** - Clean, accessible design optimized for crisis situations
 
+## 🚀 Future Development
+
+See our [Feature Wishlist](FEATURE_WISHLIST.md) for planned improvements and potential new features that could enhance the app's effectiveness in supporting mental health and suicide prevention.
+
 ## 🛠 Technical Stack
 
 - **Framework**: React Native with Expo SDK 53
@@ -170,20 +174,7 @@ suicide-safety-planning-app/
 
 ## 🤝 Contributing
 
-We welcome contributions that improve the app's effectiveness in supporting mental health. Please:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Commit your changes (`git commit -am 'Add helpful feature'`)
-4. Push to the branch (`git push origin feature/improvement`)
-5. Create a Pull Request
-
-### Guidelines for Contributors
-
-- **Sensitivity**: Remember this app serves people in crisis situations
-- **Accessibility**: Ensure all features are accessible to users with disabilities
-- **Testing**: Test thoroughly, especially crisis-related functionality
-- **Documentation**: Update documentation for any new features
+We welcome contributions that improve the app's effectiveness in supporting mental health. Please see our [Contributing Guidelines](CONTRIBUTORS.md) for detailed information on how to contribute, including important guidelines for working on mental health applications.
 
 ## 📞 Crisis Resources
 
@@ -207,7 +198,7 @@ This app is designed to supplement, not replace, professional mental health care
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Based on the Stanley-Brown Safety Planning Intervention
 - Inspired by evidence-based suicide prevention research
