@@ -349,7 +349,7 @@ export const NotificationSettings: React.FC = () => {
               <View style={styles.settingRow}>
                 <View style={styles.settingInfo}>
                   <Text style={styles.settingTitle}>Encouragement Messages</Text>
-                  <Text style={styles.settingDescription}>Positive messages when you're doing well</Text>
+                  <Text style={styles.settingDescription}>Positive messages when you&apos;re doing well</Text>
                 </View>
                 <Switch
                   value={localPreferences.encouragementMessages.enabled}
