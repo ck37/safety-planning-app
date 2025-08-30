@@ -144,7 +144,7 @@ export default function HomeScreen() {
 
       <View style={styles.footer}>
         <Text style={styles.footerText}>Remember: This too shall pass</Text>
-        <Text style={styles.footerSubtext}>You've survived 100% of your worst days</Text>
+        <Text style={styles.footerSubtext}>You&apos;ve survived 100% of your worst days</Text>
       </View>
     </ScrollView>
   );

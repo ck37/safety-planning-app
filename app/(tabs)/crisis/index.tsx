@@ -85,7 +85,7 @@ export default function CrisisScreen() {
       <View style={styles.urgentCard}>
         <Text style={styles.urgentTitle}>Need Help Now?</Text>
         <Text style={styles.urgentText}>
-          You're not alone. Reach out to any of these resources for immediate support.
+          You&apos;re not alone. Reach out to any of these resources for immediate support.
         </Text>
         <TouchableOpacity 
           style={styles.primaryButton}

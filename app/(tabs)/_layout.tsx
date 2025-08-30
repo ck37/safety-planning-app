@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { Heart, Phone, Home, BookOpen } from "lucide-react-native";
+import { Heart, Phone, BookOpen } from "lucide-react-native";
 import React from "react";
 
 export default function TabLayout() {
