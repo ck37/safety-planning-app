@@ -34,96 +34,16 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 
 See our [Feature Wishlist](FEATURE_WISHLIST.md) for planned improvements and potential new features that could enhance the app's effectiveness in supporting mental health and suicide prevention.
 
-## 🛠 Technical Stack
+## 💻 For Developers
 
-- **Framework**: React Native with Expo SDK 53
-- **Language**: TypeScript
-- **Navigation**: Expo Router
-- **State Management**: Zustand
-- **Data Storage**: AsyncStorage
-- **Styling**: NativeWind (Tailwind CSS for React Native)
-- **Icons**: Lucide React Native
-- **Package Manager**: Bun
+If you're interested in contributing to this project or setting up a development environment, please see our [Developer Documentation](DEVELOPERS.md) for detailed technical information including:
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18 or later)
-- [Bun package manager](https://bun.sh/)
-- [Expo CLI](https://docs.expo.dev/get-started/installation/)
-
-**For Physical Device Testing:**
-- [Expo Go app](https://expo.dev/client) on your iOS or Android device
-
-**For Simulator/Emulator Development:**
-- [Xcode](https://developer.apple.com/xcode/) (for iOS Simulator on macOS)
-- [Android Studio](https://developer.android.com/studio) (for Android Emulator)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ck37/suicide-safety-planning-app.git
-   cd suicide-safety-planning-app
-   ```
-
-2. **Install dependencies**
-   ```bash
-   bun install
-   ```
-
-3. **Start the development server**
-   ```bash
-   bun run start
-   ```
-
-4. **Run the app**
-   
-   After starting the development server, you have several options:
-
-   **On Physical Device:**
-   - Install [Expo Go](https://expo.dev/client) on your phone
-   - Scan the QR code displayed in your terminal with:
-     - **iOS**: Camera app or Expo Go app
-     - **Android**: Expo Go app
-   
-   **On Simulator/Emulator:**
-   - Press `i` in the terminal to open iOS Simulator
-   - Press `a` in the terminal to open Android Emulator
-   - Press `w` in the terminal to open in web browser
-
-5. **Platform-specific commands**
-   ```bash
-   # Web development
-   bun run start-web
-   
-   # Web with debug logs
-   bun run start-web-dev
-   ```
-
-### Development Commands
-
-- `bun run start` - Start the Expo development server
-- `bun run start-web` - Start web development server
-- `bun run start-web-dev` - Start web server with debug logging
-- `bun run lint` - Run ESLint for code quality checks
-- `bun run test` - Run the test suite
-- `bun run test:watch` - Run tests in watch mode
-- `bun run test:coverage` - Run tests with coverage report
-- `bun run test:ci` - Run tests for CI (no watch, with coverage)
-- `bun run type-check` - Run TypeScript type checking
-- `bun run build-check` - Run full build verification (lint + test + type-check)
-
-### Troubleshooting
-
-**Common Issues:**
-
-- **QR Code not scanning**: Ensure your phone and computer are on the same WiFi network
-- **Metro bundler issues**: Try clearing the cache with `bun run start --clear`
-- **iOS Simulator not opening**: Make sure Xcode is installed and iOS Simulator is available
-- **Android Emulator issues**: Ensure Android Studio is properly configured with an AVD
-- **Port conflicts**: The default port is 8081; if occupied, Expo will automatically use another port
+- Technical stack and architecture
+- Installation and setup instructions
+- Development commands and workflows
+- Troubleshooting guide
+- Contributing guidelines
+- Testing procedures
 
 ## 📱 Usage
 
@@ -146,24 +66,6 @@ See our [Feature Wishlist](FEATURE_WISHLIST.md) for planned improvements and pot
 4. **Use the Crisis Hotline button** for immediate professional support (988)
 5. **Go to a safe place** from your identified locations
 
-## 🏗 Project Structure
-
-```
-suicide-safety-planning-app/
-├── app/                    # Expo Router pages
-│   ├── (tabs)/            # Tab navigation structure
-│   │   ├── (home)/        # Home tab (safety plan overview)
-│   │   ├── crisis/        # Crisis resources tab
-│   │   └── resources/     # Additional resources tab
-│   ├── _layout.tsx        # Root layout
-│   └── edit-plan.tsx      # Safety plan editing screen
-├── providers/             # React context providers
-│   └── SafetyPlanProvider.tsx  # Safety plan state management
-├── types/                 # TypeScript type definitions
-│   └── SafetyPlan.ts      # Safety plan data structures
-├── assets/                # Images and static assets
-└── app.json              # Expo configuration
-```
 
 ## 🔒 Privacy & Security
 
@@ -174,7 +76,11 @@ suicide-safety-planning-app/
 
 ## 🤝 Contributing
 
-We welcome contributions that improve the app's effectiveness in supporting mental health. Please see our [Contributing Guidelines](CONTRIBUTORS.md) for detailed information on how to contribute, including important guidelines for working on mental health applications.
+We welcome contributions that improve the app's effectiveness in supporting mental health. Please see our:
+
+- [Contributing Guidelines](CONTRIBUTORS.md) - Important guidelines for working on mental health applications
+- [Developer Documentation](DEVELOPERS.md) - Technical setup and development information
+- [Feature Wishlist](FEATURE_WISHLIST.md) - Planned improvements and feature requests
 
 ## 📞 Crisis Resources
 
