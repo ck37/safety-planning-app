@@ -24,7 +24,7 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 - **Crisis Hotline Integration** - One-tap access to the 988 Suicide & Crisis Lifeline
 - **Voice-Activated Safety Plan** - Voice commands to read safety plan aloud when users can't focus on reading
 - **Mood Tracking with Crisis Detection** - Daily mood check-ins with intelligent pattern analysis to identify potential crisis situations
-- **Smart Notifications** - Proactive reminders and interventions based on mood patterns and user behavior
+- **Smart Notifications** - Intelligent, context-aware reminders including daily check-ins, mood tracking reminders, crisis support messages, safety plan review reminders, and encouragement notifications based on mood patterns and user behavior
 - **Offline Functionality** - Safety plan remains accessible without internet connection
 
 ### Security & Privacy Features

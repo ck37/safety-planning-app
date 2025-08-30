@@ -6,7 +6,7 @@ This document outlines potential improvements and new features that could enhanc
 
 ### Enhanced Crisis Detection
 - ~~**Mood Tracking Integration**: Daily mood check-ins with trend analysis to identify patterns that precede crisis situations~~ ✅ **IMPLEMENTED**
-- **Smart Notifications**: Proactive reminders based on user patterns (e.g., "You haven't checked in today, how are you feeling?")
+- ~~**Smart Notifications**: Proactive reminders based on user patterns (e.g., "You haven't checked in today, how are you feeling?")~~ ✅ **IMPLEMENTED**
 - ~~**Crisis Escalation Levels**: Different intervention strategies based on crisis severity (mild concern → moderate distress → severe crisis)~~ ✅ **IMPLEMENTED**
 - **Automatic Emergency Contacts**: Option to automatically notify designated contacts when crisis level reaches critical threshold
 

@@ -21,7 +21,9 @@ import {
   Lock, 
   Eye, 
   Fingerprint,
-  Info
+  Info,
+  Bell,
+  ChevronRight
 } from 'lucide-react-native';
 import { BiometricUtils } from '@/components/BiometricAuth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -278,6 +280,28 @@ export default function SecuritySettingsScreen() {
           </View>
         </View>
 
+        {/* Smart Notifications */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Bell size={24} color="#6B46C1" />
+            <Text style={styles.sectionTitle}>Smart Notifications</Text>
+          </View>
+          
+          <TouchableOpacity
+            style={styles.navigationItem}
+            onPress={() => router.push('/notification-settings' as any)}
+            activeOpacity={0.7}
+          >
+            <View style={styles.settingInfo}>
+              <Text style={styles.settingLabel}>Notification Settings</Text>
+              <Text style={styles.settingDescription}>
+                Configure intelligent reminders and support messages
+              </Text>
+            </View>
+            <ChevronRight size={20} color="#9CA3AF" />
+          </TouchableOpacity>
+        </View>
+
         {/* Auto-Lock Settings */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
@@ -469,5 +493,11 @@ const styles = StyleSheet.create({
     color: '#6B7280',
     flex: 1,
     lineHeight: 20,
+  },
+  navigationItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 4,
   },
 });
