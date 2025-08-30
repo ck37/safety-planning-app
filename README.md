@@ -43,10 +43,10 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 
 ### Prerequisites
 
-- Node.js (v18 or later)
-- Bun package manager
-- Expo CLI
-- iOS Simulator (for iOS development) or Android Studio (for Android development)
+- [Node.js](https://nodejs.org/) (v18 or later)
+- [Bun package manager](https://bun.sh/)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- [iOS Simulator](https://developer.apple.com/xcode/) (for iOS development) or [Android Studio](https://developer.android.com/studio) (for Android development)
 
 ### Installation
 
