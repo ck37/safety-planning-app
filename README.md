@@ -25,7 +25,7 @@ View the live web version: [https://safety-planning-app.netlify.app/](https://sa
 To experience the full native iPhone app with all features including biometric authentication:
 
 1. **Install Expo Go** from the App Store on your iPhone
-2. **Scan the QR code** with your Camera app or visit: [exp://exp.host/@ck37/suicide-safety-planner](exp://exp.host/@ck37/suicide-safety-planner)
+2. **Scan the QR code** with your Camera app
 3. **Launch in Expo Go** to run the native version with full iOS integration
 
 The native version provides access to all features including:
@@ -42,7 +42,7 @@ The native version provides access to all features including:
 To experience the full native Android app with all features including biometric authentication:
 
 1. **Install Expo Go** from the Google Play Store on your Android device
-2. **Scan the QR code** with Expo Go or visit: [exp://exp.host/@ck37/suicide-safety-planner](exp://exp.host/@ck37/suicide-safety-planner)
+2. **Scan the QR code** with Expo Go
 3. **Launch in Expo Go** to run the native version with full Android integration
 
 The native Android version provides access to all features including:
