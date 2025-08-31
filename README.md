@@ -10,6 +10,12 @@ A compassionate, evidence-based mobile application designed to help individuals 
 
 This app provides a digital implementation of the Stanley-Brown Safety Planning Intervention, a widely recognized suicide prevention tool used by mental health professionals. It empowers users to create personalized safety plans that can be accessed anytime, helping them navigate through difficult moments and connect with support resources.
 
+## 🌐 Live Demo
+
+View the live web version: [https://ck37.github.io/suicide-safety-planning-app/](https://ck37.github.io/suicide-safety-planning-app/)
+
+*Note: The web version includes fallbacks for native features like biometric authentication, but provides full access to the core safety planning functionality.*
+
 ## ✨ Features
 
 ### Core Safety Plan Components
@@ -55,6 +61,27 @@ If you're interested in contributing to this project or setting up a development
 - Troubleshooting guide
 - Contributing guidelines
 - Testing procedures
+
+### Deployment
+
+The app automatically deploys to GitHub Pages when changes are pushed to the main branch via GitHub Actions.
+
+**Manual Deployment:**
+```bash
+# Build the web version
+npm run web:build
+
+# Deploy to GitHub Pages (if gh-pages is configured)
+npm run deploy:gh-pages
+```
+
+**Local Testing:**
+```bash
+# Build and serve locally
+npm run web:build
+npm run web:serve
+# Then open http://localhost:3000
+```
 
 ## 📱 Usage
 

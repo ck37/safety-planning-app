@@ -19,6 +19,7 @@ This document outlines potential improvements and new features that could enhanc
 ## 🧠 Personalization & AI Features
 
 ### Intelligent Recommendations
+- **AI-Powered Safety Plan Creation**: Interactive AI chat assistant to guide users through creating their initial safety plan with personalized questions and suggestions [📋 **GitHub Issue #3**](https://github.com/ck37/suicide-safety-planning-app/issues/3)
 - **Personalized Coping Strategy Suggestions**: AI-powered recommendations based on what has worked for similar users (anonymized data)
 - **Contextual Safety Plan**: Dynamic safety plan that adapts based on time of day, location, or current mood
 - **Pattern Recognition**: Identify personal warning sign patterns and suggest preventive measures
