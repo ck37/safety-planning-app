@@ -28,12 +28,7 @@ To experience the full native iPhone app with all features including biometric a
 2. **Scan the QR code** with your Camera app
 3. **Launch in Expo Go** to run the native version with full iOS integration
 
-The native version provides access to all features including:
-- Face ID/Touch ID biometric authentication
-- Native iOS notifications and alerts
-- Optimized performance and native UI components
-- Full offline functionality
-- Voice activation features
+The native version provides access to all features including Face ID/Touch ID biometric authentication, native iOS notifications and alerts, optimized performance with native UI components, full offline functionality, and voice activation features.
 
 *For the most authentic experience and to test all security features, we recommend using the native iOS version through Expo Go.*
 
@@ -45,12 +40,7 @@ To experience the full native Android app with all features including biometric 
 2. **Scan the QR code** with Expo Go
 3. **Launch in Expo Go** to run the native version with full Android integration
 
-The native Android version provides access to all features including:
-- Fingerprint/Face unlock biometric authentication
-- Native Android notifications and system integration
-- Optimized performance and Material Design components
-- Full offline functionality
-- Voice activation features
+The native Android version provides access to all features including fingerprint/face unlock biometric authentication, native Android notifications and system integration, optimized performance with Material Design components, full offline functionality, and voice activation features.
 
 *The Android version offers the same comprehensive feature set as iOS, optimized for Android's security and notification systems.*
 
