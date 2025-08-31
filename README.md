@@ -93,16 +93,6 @@ See our [Feature Wishlist](FEATURE_WISHLIST.md) for planned improvements and pot
 
 Interested in contributing? See our [Developer Documentation](DEVELOPERS.md) for complete setup instructions, technical details, and contribution guidelines.
 
-**Quick Start:**
-```bash
-git clone https://github.com/ck37/suicide-safety-planning-app.git
-cd suicide-safety-planning-app
-bun install
-bun run start
-```
-
-**Tech Stack:** React Native, Expo, TypeScript, Zustand, NativeWind
-
 ## 📱 Usage
 
 ### Creating Your Safety Plan
