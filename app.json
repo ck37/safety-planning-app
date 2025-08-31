@@ -31,7 +31,12 @@
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.READ_EXTERNAL_STORAGE",
-        "android.permission.WRITE_EXTERNAL_STORAGE"
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECORD_AUDIO"
       ]
     },
     "web": {
@@ -61,7 +66,7 @@
     "experiments": {
       "typedRoutes": true
     },
-      "extra": {
+    "extra": {
       "router": {
         "origin": "https://ck37.github.io/suicide-safety-planning-app/"
       },
@@ -69,6 +74,12 @@
         "projectId": "314cb239-3b04-4dd1-8e54-d9551eb21e96"
       }
     },
-    "owner": "ck37"
+    "owner": "ck37",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/314cb239-3b04-4dd1-8e54-d9551eb21e96"
+    }
   }
 }
