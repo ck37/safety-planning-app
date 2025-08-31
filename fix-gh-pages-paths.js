@@ -20,7 +20,7 @@ function fixPaths() {
     console.log('Fixed index.html asset paths');
   }
   
-  // Create 404.html for GitHub Pages SPA routing
+  // Create a simple 404.html that redirects to index.html
   const notFoundPath = path.join(distDir, '404.html');
   const notFoundContent = `<!DOCTYPE html>
 <html>
@@ -28,65 +28,23 @@ function fixPaths() {
     <meta charset="utf-8">
     <title>Suicide Safety Planner</title>
     <script type="text/javascript">
-      // GitHub Pages SPA routing for subdirectory deployment
-      // For https://username.github.io/repo-name/ deployment
-      var pathSegmentsToKeep = 1;
-
-      var l = window.location;
-      var pathArray = l.pathname.split('/');
+      // Simple redirect to index.html for GitHub Pages SPA
+      var currentPath = window.location.pathname;
+      var basePath = '/suicide-safety-planning-app';
       
-      // For subdirectory deployment, we need to preserve the repo name
-      // and redirect internal routes properly
-      if (pathArray.length > 2) {
-        // We have a route beyond the repo name, redirect to index with hash
-        var repoName = pathArray[1]; // 'suicide-safety-planning-app'
-        var route = pathArray.slice(2).join('/');
-        
-        var redirectUrl = l.protocol + '//' + l.hostname + '/' + repoName + '/?/' + route;
-        if (l.search) {
-          redirectUrl += '&' + l.search.slice(1).replace(/&/g, '~and~');
-        }
-        if (l.hash) {
-          redirectUrl += l.hash;
-        }
-        
-        l.replace(redirectUrl);
+      // If we're not already at the base path, redirect there
+      if (currentPath !== basePath + '/' && currentPath !== basePath) {
+        window.location.replace(basePath + '/');
       }
     </script>
   </head>
   <body>
+    <p>Redirecting...</p>
   </body>
 </html>`;
   
   fs.writeFileSync(notFoundPath, notFoundContent);
   console.log('Created 404.html for SPA routing');
-  
-  // Add routing script to index.html
-  if (fs.existsSync(indexPath)) {
-    let indexContent = fs.readFileSync(indexPath, 'utf8');
-    
-    const routingScript = `
-    <script type="text/javascript">
-      // GitHub Pages SPA routing for Expo Router subdirectory deployment
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          
-          // For subdirectory deployment, preserve the base path
-          var basePath = '/suicide-safety-planning-app';
-          var newPath = basePath + decoded;
-          
-          window.history.replaceState(null, null, newPath + l.hash);
-        }
-      }(window.location))
-    </script>`;
-    
-    indexContent = indexContent.replace('</head>', routingScript + '\n</head>');
-    fs.writeFileSync(indexPath, indexContent);
-    console.log('Added routing script to index.html');
-  }
   
   console.log('GitHub Pages path fixing complete!');
 }
