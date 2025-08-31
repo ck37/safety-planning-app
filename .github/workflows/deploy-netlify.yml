@@ -14,17 +14,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
       with:
-        node-version: '20'
-        cache: 'npm'
+        bun-version: latest
         
     - name: Install dependencies
-      run: npm install --legacy-peer-deps
+      run: bun install
       
     - name: Build web app for Netlify
-      run: npm run web:build:netlify
+      run: bun run web:build:netlify
       
     - name: Deploy to Netlify
       uses: nwtgck/actions-netlify@v3.0
