@@ -10,6 +10,8 @@ A compassionate, evidence-based mobile application designed to help individuals 
 
 This app provides a digital implementation of the Stanley-Brown Safety Planning Intervention, a widely recognized suicide prevention tool used by mental health professionals. It empowers users to create personalized safety plans that can be accessed anytime, helping them navigate through difficult moments and connect with support resources.
 
+For detailed information about the research foundation behind safety planning interventions, see our [Safety Planning for Adolescent Suicide Prevention research document](docs/Safety%20Planning%20for%20Adolescent%20Suicide%20Prevention.pdf).
+
 ## 🌐 Live Demo
 
 View the live web version: [https://safety-planning-app.netlify.app/](https://safety-planning-app.netlify.app/)
