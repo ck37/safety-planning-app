@@ -6,7 +6,7 @@
     "start": "bunx rork start -p n19gobc45792lk4lc5i46 --tunnel",
     "start-web": "bunx rork start -p n19gobc45792lk4lc5i46 --web --tunnel",
     "start-web-dev": "DEBUG=expo* bunx rork start -p n19gobc45792lk4lc5i46 --web --tunnel",
-    "web:build": "expo export --platform web",
+    "web:build": "expo export --platform web && node fix-gh-pages-paths.js",
     "web:serve": "npx serve dist",
     "deploy:gh-pages": "gh-pages -d dist",
     "lint": "expo lint",
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
+    "@expo/webpack-config": "^19.0.1",
     "@nkzw/create-context-hook": "^1.1.0",
     "@react-native-async-storage/async-storage": "2.1.2",
     "@react-navigation/native": "^7.1.6",

@@ -37,8 +37,7 @@
     "web": {
       "favicon": "./assets/images/favicon.png",
       "bundler": "metro",
-      "output": "static",
-      "baseUrl": "/suicide-safety-planning-app/"
+      "output": "static"
     },
     "assetBundlePatterns": [
       "**/*"
