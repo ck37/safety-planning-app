@@ -149,6 +149,10 @@ All data secured using device-level encryption and secure storage. This ensures 
 All data remains on the user's device with no external data collection. This approach ensures complete privacy and user control over sensitive information.
 
 **Key capabilities:**
+- **Local Storage Only**: All safety plan data is stored locally on the user's device
+- **No Data Collection**: The app does not collect, transmit, or store personal information on external servers
+- **Offline Functionality**: Safety plans remain accessible without internet connection
+- **Secure**: Uses device-level encryption for stored data
 - No cloud storage or data transmission
 - No analytics or tracking
 - No account creation required

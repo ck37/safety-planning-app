@@ -94,13 +94,6 @@ Interested in contributing? See our [Developer Documentation](docs/DEVELOPERS.md
 5. **Go to a safe place** from your identified locations
 
 
-## 🔒 Privacy & Security
-
-- **Local Storage Only**: All safety plan data is stored locally on the user's device
-- **No Data Collection**: The app does not collect, transmit, or store personal information on external servers
-- **Offline Functionality**: Safety plans remain accessible without internet connection
-- **Secure**: Uses device-level encryption for stored data
-
 ## 🤝 Contributing
 
 We welcome contributions that improve the app's effectiveness in supporting mental health. Please see our:
