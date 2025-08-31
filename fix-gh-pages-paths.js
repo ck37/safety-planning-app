@@ -12,75 +12,74 @@ function fixPaths() {
   if (fs.existsSync(indexPath)) {
     let indexContent = fs.readFileSync(indexPath, 'utf8');
     
-    // Fix asset paths
+    // Fix asset paths in HTML only (not in JS bundles)
     indexContent = indexContent.replace(/href="\//g, `href="${baseUrl}/`);
     indexContent = indexContent.replace(/src="\//g, `src="${baseUrl}/`);
     
-    // Add GitHub Pages routing script to index.html
-    const indexRoutingScript = `
-    <script>
-      // GitHub Pages routing fix for index.html
-      (function(l) {
-        if (l.search) {
-          var q = {};
-          l.search.slice(1).split('&').forEach(function(v) {
-            var a = v.split('=');
-            q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
-          });
-          if (q.p !== undefined) {
-            window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + (q.p || '') +
-              (q.q ? ('?' + q.q) : '') +
-              l.hash
-            );
-          }
-        }
-      }(window.location))
-    </script>
-    `;
-    
-    indexContent = indexContent.replace('</head>', indexRoutingScript + '</head>');
     fs.writeFileSync(indexPath, indexContent);
-    console.log('Fixed index.html paths and added routing script');
-  }
-  
-  // Fix JavaScript bundle paths
-  const expoDir = path.join(distDir, '_expo');
-  if (fs.existsSync(expoDir)) {
-    function fixJsFiles(dir) {
-      const files = fs.readdirSync(dir);
-      files.forEach(file => {
-        const filePath = path.join(dir, file);
-        const stat = fs.statSync(filePath);
-        
-        if (stat.isDirectory()) {
-          fixJsFiles(filePath);
-        } else if (file.endsWith('.js')) {
-          let content = fs.readFileSync(filePath, 'utf8');
-          
-          // Fix asset loading paths
-          content = content.replace(/"\/_expo\//g, `"${baseUrl}/_expo/`);
-          content = content.replace(/'\/assets\//g, `'${baseUrl}/assets/`);
-          content = content.replace(/"\//g, `"${baseUrl}/`);
-          
-          fs.writeFileSync(filePath, content);
-          console.log(`Fixed paths in ${file}`);
-        }
-      });
-    }
-    
-    fixJsFiles(expoDir);
+    console.log('Fixed index.html asset paths');
   }
   
   // Create 404.html for GitHub Pages SPA routing
   const notFoundPath = path.join(distDir, '404.html');
+  const notFoundContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Suicide Safety Planner</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string and hash fragment,
+      // e.g. https://www.foo.tld/one/two?a=b&c=d#qwe, becomes
+      // https://www.foo.tld/?/one/two&a=b~and~c=d#qwe
+      // Note: this 404.html file must be at least 512 bytes for it to work
+      // with Internet Explorer (it is currently > 512 bytes)
+
+      // If you're creating a Project Pages site and NOT using a custom domain,
+      // then set pathSegmentsToKeep to 1 (enterprise users may need to set it to > 1).
+      // This way the code will only replace the route part and not the real directory.
+      // This script will NOT work if your site is hosted in a subdirectory,
+      // for example: https://username.github.io/repo-name/
+      // In this case, you would set pathSegmentsToKeep to 1 (or 2, 3, etc).
+      var pathSegmentsToKeep = 1;
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+  </body>
+</html>`;
+  
+  fs.writeFileSync(notFoundPath, notFoundContent);
+  console.log('Created 404.html for SPA routing');
+  
+  // Add routing script to index.html
   if (fs.existsSync(indexPath)) {
-    let notFoundContent = fs.readFileSync(indexPath, 'utf8');
+    let indexContent = fs.readFileSync(indexPath, 'utf8');
     
-    // Add script to handle client-side routing
     const routingScript = `
-    <script>
-      // GitHub Pages SPA routing fix
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script checks to see if a redirect is present in the query string,
+      // converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
       (function(l) {
         if (l.search[1] === '/' ) {
           var decoded = l.search.slice(1).split('&').map(function(s) { 
@@ -91,12 +90,11 @@ function fixPaths() {
           );
         }
       }(window.location))
-    </script>
-    `;
+    </script>`;
     
-    notFoundContent = notFoundContent.replace('</head>', routingScript + '</head>');
-    fs.writeFileSync(notFoundPath, notFoundContent);
-    console.log('Created 404.html for SPA routing');
+    indexContent = indexContent.replace('</head>', routingScript + '\n</head>');
+    fs.writeFileSync(indexPath, indexContent);
+    console.log('Added routing script to index.html');
   }
   
   console.log('GitHub Pages path fixing complete!');
