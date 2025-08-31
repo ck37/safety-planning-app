@@ -53,54 +53,17 @@ See our [Feature Wishlist](FEATURE_WISHLIST.md) for planned improvements and pot
 
 ## 💻 For Developers
 
-If you're interested in contributing to this project or setting up a development environment, please see our [Developer Documentation](DEVELOPERS.md) for detailed technical information including:
+Interested in contributing? See our [Developer Documentation](DEVELOPERS.md) for complete setup instructions, technical details, and contribution guidelines.
 
-- Technical stack and architecture
-- Installation and setup instructions
-- Development commands and workflows
-- Troubleshooting guide
-- Contributing guidelines
-- Testing procedures
-
-### Deployment
-
-The app supports deployment to both **Netlify** and **GitHub Pages**:
-
-#### Netlify (Current)
-- **Automatic**: Deploys automatically when changes are pushed to the main branch
-- **Manual**: `bun run deploy:netlify`
-- **Documentation**: [Netlify Deployment Guide](docs/NETLIFY_DEPLOYMENT.md)
-
-#### GitHub Pages (Alternative)
-- **Automatic**: Deploys automatically when changes are pushed to the main branch via GitHub Actions
-- **Manual**: `bun run deploy:gh-pages`
-- **Documentation**: [GitHub Pages Deployment Guide](docs/GITHUB_PAGES_DEPLOYMENT.md)
-
-**Build Commands:**
+**Quick Start:**
 ```bash
-# Build for GitHub Pages (includes path fixes)
-bun run web:build
-
-# Build for Netlify (clean build)
-bun run web:build:netlify
-
-# Deploy to GitHub Pages
-bun run deploy:gh-pages
-
-# Deploy to Netlify (production)
-bun run deploy:netlify
-
-# Deploy to Netlify (preview)
-bun run deploy:netlify:preview
+git clone https://github.com/ck37/suicide-safety-planning-app.git
+cd suicide-safety-planning-app
+bun install
+bun run start
 ```
 
-**Local Testing:**
-```bash
-# Build and serve locally
-bun run web:build
-bun run web:serve
-# Then open http://localhost:3000
-```
+**Tech Stack:** React Native, Expo, TypeScript, Zustand, NativeWind
 
 ## 📱 Usage
 

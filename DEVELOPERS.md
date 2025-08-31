@@ -289,6 +289,64 @@ When working on this mental health application:
 - **Accessibility**: Is the feature accessible to all users?
 - **Mental Health**: Is the implementation appropriate for mental health contexts?
 
+## 🚀 Deployment
+
+The app supports deployment to both **Netlify** and **GitHub Pages**:
+
+### Netlify (Current)
+- **Automatic**: Deploys automatically when changes are pushed to the main branch
+- **Manual**: `bun run deploy:netlify`
+- **Documentation**: [Netlify Deployment Guide](docs/NETLIFY_DEPLOYMENT.md)
+
+### GitHub Pages (Alternative)
+- **Automatic**: Deploys automatically when changes are pushed to the main branch via GitHub Actions
+- **Manual**: `bun run deploy:gh-pages`
+- **Documentation**: [GitHub Pages Deployment Guide](docs/GITHUB_PAGES_DEPLOYMENT.md)
+
+### Build Commands
+
+```bash
+# Build for GitHub Pages (includes path fixes)
+bun run web:build
+
+# Build for Netlify (clean build)
+bun run web:build:netlify
+
+# Deploy to GitHub Pages
+bun run deploy:gh-pages
+
+# Deploy to Netlify (production)
+bun run deploy:netlify
+
+# Deploy to Netlify (preview)
+bun run deploy:netlify:preview
+```
+
+### Local Testing
+
+```bash
+# Build and serve locally
+bun run web:build
+bun run web:serve
+# Then open http://localhost:3000
+```
+
+### GitHub Workflow Setup
+
+The project includes automatic deployment workflows:
+
+- **Netlify**: `.github/workflows/deploy-netlify.yml`
+- **GitHub Pages**: `.github/workflows/deploy-gh-pages.yml`
+
+For Netlify deployment, configure these GitHub repository secrets:
+- `NETLIFY_AUTH_TOKEN`: Your Netlify personal access token
+- `NETLIFY_SITE_ID`: Your Netlify site ID
+
+To configure secrets:
+1. Go to your GitHub repository → Settings
+2. Click "Secrets and variables" → "Actions"
+3. Add the required secrets
+
 ## 📚 Additional Resources
 
 ### Expo Documentation
