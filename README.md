@@ -84,14 +84,6 @@ Interested in contributing? See our [Developer Documentation](docs/DEVELOPERS.md
 5. **Go to a safe place** from your identified locations
 
 
-## 🤝 Contributing
-
-We welcome contributions that improve the app's effectiveness in supporting mental health. Please see our:
-
-- [Contributing Guidelines](docs/CONTRIBUTORS.md) - Important guidelines for working on mental health applications
-- [Developer Documentation](docs/DEVELOPERS.md) - Technical setup and development information
-- [Feature Wishlist](docs/FEATURE_WISHLIST.md) - Planned improvements and feature requests
-
 ## 📞 Crisis Resources
 
 If you or someone you know is in immediate danger:
