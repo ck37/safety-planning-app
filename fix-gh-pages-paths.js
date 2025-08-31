@@ -16,8 +16,32 @@ function fixPaths() {
     indexContent = indexContent.replace(/href="\//g, `href="${baseUrl}/`);
     indexContent = indexContent.replace(/src="\//g, `src="${baseUrl}/`);
     
+    // Add GitHub Pages routing script to index.html
+    const indexRoutingScript = `
+    <script>
+      // GitHub Pages routing fix for index.html
+      (function(l) {
+        if (l.search) {
+          var q = {};
+          l.search.slice(1).split('&').forEach(function(v) {
+            var a = v.split('=');
+            q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+          });
+          if (q.p !== undefined) {
+            window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + (q.p || '') +
+              (q.q ? ('?' + q.q) : '') +
+              l.hash
+            );
+          }
+        }
+      }(window.location))
+    </script>
+    `;
+    
+    indexContent = indexContent.replace('</head>', indexRoutingScript + '</head>');
     fs.writeFileSync(indexPath, indexContent);
-    console.log('Fixed index.html paths');
+    console.log('Fixed index.html paths and added routing script');
   }
   
   // Fix JavaScript bundle paths
@@ -46,6 +70,33 @@ function fixPaths() {
     }
     
     fixJsFiles(expoDir);
+  }
+  
+  // Create 404.html for GitHub Pages SPA routing
+  const notFoundPath = path.join(distDir, '404.html');
+  if (fs.existsSync(indexPath)) {
+    let notFoundContent = fs.readFileSync(indexPath, 'utf8');
+    
+    // Add script to handle client-side routing
+    const routingScript = `
+    <script>
+      // GitHub Pages SPA routing fix
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    `;
+    
+    notFoundContent = notFoundContent.replace('</head>', routingScript + '</head>');
+    fs.writeFileSync(notFoundPath, notFoundContent);
+    console.log('Created 404.html for SPA routing');
   }
   
   console.log('GitHub Pages path fixing complete!');
