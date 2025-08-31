@@ -18,14 +18,15 @@ View the live web version: [https://safety-planning-app.netlify.app/](https://sa
 
 *Note: The web version includes fallbacks for native features like biometric authentication, but provides full access to the core safety planning functionality.*
 
+<img src="assets/images/qr-code.png" alt="Expo QR Code" width="150" align="right" />
+
 ### 📱 iPhone App Demo with Expo
 
 To experience the full native iPhone app with all features including biometric authentication:
 
 1. **Install Expo Go** from the App Store on your iPhone
-2. **Visit the Expo project page**: [exp://exp.host/@ck37/suicide-safety-planner](exp://exp.host/@ck37/suicide-safety-planner)
-3. **Or run locally**: `npx expo start` and scan the QR code with your Camera app
-4. **Launch in Expo Go** to run the native version with full iOS integration
+2. **Scan the QR code** with your Camera app or visit: [exp://exp.host/@ck37/suicide-safety-planner](exp://exp.host/@ck37/suicide-safety-planner)
+3. **Launch in Expo Go** to run the native version with full iOS integration
 
 The native version provides access to all features including:
 - Face ID/Touch ID biometric authentication
@@ -41,9 +42,8 @@ The native version provides access to all features including:
 To experience the full native Android app with all features including biometric authentication:
 
 1. **Install Expo Go** from the Google Play Store on your Android device
-2. **Visit the Expo project page**: [exp://exp.host/@ck37/suicide-safety-planner](exp://exp.host/@ck37/suicide-safety-planner)
-3. **Or run locally**: `npx expo start` and scan the QR code with Expo Go
-4. **Launch in Expo Go** to run the native version with full Android integration
+2. **Scan the QR code** with Expo Go or visit: [exp://exp.host/@ck37/suicide-safety-planner](exp://exp.host/@ck37/suicide-safety-planner)
+3. **Launch in Expo Go** to run the native version with full Android integration
 
 The native Android version provides access to all features including:
 - Fingerprint/Face unlock biometric authentication
@@ -53,12 +53,6 @@ The native Android version provides access to all features including:
 - Voice activation features
 
 *The Android version offers the same comprehensive feature set as iOS, optimized for Android's security and notification systems.*
-
-**Project Details:**
-- **Expo Project**: `@ck37/suicide-safety-planner`
-- **EAS Project ID**: `314cb239-3b04-4dd1-8e54-d9551eb21e96`
-- **Latest Update**: Available on both iOS and Android platforms
-- **Runtime Version**: 1.0.0
 
 ## ✨ Features
 
