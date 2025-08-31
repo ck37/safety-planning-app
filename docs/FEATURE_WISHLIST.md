@@ -41,7 +41,7 @@ This feature wishlist is informed by evidence-based suicide prevention research.
 ## 📱 User Experience & Interface
 
 ### Enhanced Navigation
-- **Guided Onboarding**: Interactive tutorial showing how to create and use a safety plan effectively
+- **Guided Onboarding**: Interactive tutorial showing how to create and use a safety plan effectively [📋 **GitHub Issue #7**](https://github.com/ck37/safety-planning-app/issues/7)
 - **Progress Tracking**: Visual indicators showing completion status of safety plan sections
 - **Quick Actions**: Swipe gestures for common actions (call contact, view coping strategies)
 - **Dark Mode**: Reduce eye strain during nighttime crisis situations
