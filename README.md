@@ -12,7 +12,7 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 
 ## 🌐 Live Demo
 
-View the live web version: [https://ck37.github.io/suicide-safety-planning-app/](https://ck37.github.io/suicide-safety-planning-app/)
+View the live web version: [https://joyful-truffle-53cfd9.netlify.app/](https://joyful-truffle-53cfd9.netlify.app/)
 
 *Note: The web version includes fallbacks for native features like biometric authentication, but provides full access to the core safety planning functionality.*
 
@@ -64,22 +64,41 @@ If you're interested in contributing to this project or setting up a development
 
 ### Deployment
 
-The app automatically deploys to GitHub Pages when changes are pushed to the main branch via GitHub Actions.
+The app supports deployment to both **Netlify** and **GitHub Pages**:
 
-**Manual Deployment:**
+#### Netlify (Current)
+- **Automatic**: Deploys automatically when changes are pushed to the main branch
+- **Manual**: `bun run deploy:netlify`
+- **Documentation**: [Netlify Deployment Guide](docs/NETLIFY_DEPLOYMENT.md)
+
+#### GitHub Pages (Alternative)
+- **Automatic**: Deploys automatically when changes are pushed to the main branch via GitHub Actions
+- **Manual**: `bun run deploy:gh-pages`
+- **Documentation**: [GitHub Pages Deployment Guide](docs/GITHUB_PAGES_DEPLOYMENT.md)
+
+**Build Commands:**
 ```bash
-# Build the web version
-npm run web:build
+# Build for GitHub Pages (includes path fixes)
+bun run web:build
 
-# Deploy to GitHub Pages (if gh-pages is configured)
-npm run deploy:gh-pages
+# Build for Netlify (clean build)
+bun run web:build:netlify
+
+# Deploy to GitHub Pages
+bun run deploy:gh-pages
+
+# Deploy to Netlify (production)
+bun run deploy:netlify
+
+# Deploy to Netlify (preview)
+bun run deploy:netlify:preview
 ```
 
 **Local Testing:**
 ```bash
 # Build and serve locally
-npm run web:build
-npm run web:serve
+bun run web:build
+bun run web:serve
 # Then open http://localhost:3000
 ```
 
