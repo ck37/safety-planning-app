@@ -54,36 +54,15 @@ The native Android version provides access to all features including:
 
 *The Android version offers the same comprehensive feature set as iOS, optimized for Android's security and notification systems.*
 
-## ✨ Features
+## ✨ Key Features
 
-### Core Safety Plan Components
-- **Warning Signs Recognition** - Identify personal warning signs that indicate a crisis may be developing
-- **Coping Strategies** - Document healthy coping mechanisms and self-soothing techniques
-- **Support Contacts** - Maintain a list of trusted people who can provide help and support
-- **Safe Places** - Identify environments that promote safety and well-being
-- **Reasons for Living** - Remember personal motivations and values that provide hope
+- **📋 Personalized Safety Plans** - Create comprehensive safety plans with warning signs, coping strategies, support contacts, safe places, and reasons for living
+- **🚨 Crisis Management** - Quick crisis button, 988 hotline integration, voice-activated safety plan, and smart notifications for immediate support
+- **🛡️ Privacy & Security** - Biometric authentication, stealth mode, device-level encryption, and complete local data storage with no external collection
+- **♿ Accessibility** - Cross-platform availability, intuitive crisis-optimized design, and multiple access methods including voice control
+- **📊 Intelligent Support** - Mood tracking with crisis detection, smart notifications, and offline functionality for continuous support
 
-### Crisis Management & Emergency Features
-- **Quick Crisis Button** - Large, always-visible crisis button on home screen for immediate safety plan access
-- **Crisis Hotline Integration** - One-tap access to the 988 Suicide & Crisis Lifeline
-- **Voice-Activated Safety Plan** - Voice commands to read safety plan aloud when users can't focus on reading
-- **Mood Tracking with Crisis Detection** - Daily mood check-ins with intelligent pattern analysis to identify potential crisis situations
-- **Smart Notifications** - Intelligent, context-aware reminders including daily check-ins, mood tracking reminders, crisis support messages, safety plan review reminders, and encouragement notifications based on mood patterns and user behavior
-- **Offline Functionality** - Safety plan remains accessible without internet connection
-
-### Security & Privacy Features
-- **Biometric Authentication** - Fingerprint, Face ID, or iris authentication to protect sensitive mental health data
-- **Stealth Mode** - Disguise app appearance for users in unsafe living situations
-- **Auto-Lock Protection** - Configurable automatic locking after periods of inactivity
-- **Device-Level Encryption** - All data secured using device-level encryption and secure storage
-- **Privacy-Focused** - All data remains on the user's device with no external data collection
-
-### Accessibility & User Experience
-- **Cross-Platform** - Available on iOS, Android, and Web
-- **Intuitive Interface** - Clean, accessible design optimized for crisis situations
-- **Multiple Access Methods** - Touch, voice, and visual interfaces for different user needs
-- **Crisis-Optimized Design** - Large buttons and clear navigation for use during distressing moments
-- **Comprehensive Testing** - Automated quality assurance with linting and code quality checks
+**[View Detailed Features →](docs/FEATURES.md)**
 
 ## 🚀 Future Development
 
