@@ -61,7 +61,7 @@
     "experiments": {
       "typedRoutes": true
     },
-    "extra": {
+      "extra": {
       "router": {
         "origin": "https://ck37.github.io/suicide-safety-planning-app/"
       },

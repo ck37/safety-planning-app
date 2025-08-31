@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Stack } from "expo-router";
+import { Stack, router } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -45,6 +45,34 @@ function RootLayoutNav() {
 export default function RootLayout() {
   useEffect(() => {
     SplashScreen.hideAsync();
+    // Debugging: log runtime location info on web to diagnose routing issues
+    if (Platform.OS === 'web' && typeof window !== 'undefined') {
+      // eslint-disable-next-line no-console
+      console.log('EXPO_ROUTER_DEBUG location.href=', window.location.href);
+      // eslint-disable-next-line no-console
+      console.log('EXPO_ROUTER_DEBUG location.pathname=', window.location.pathname);
+      // eslint-disable-next-line no-console
+      console.log('EXPO_ROUTER_DEBUG document.baseURI=', document.baseURI);
+      
+      // If the app is hosted under a GitHub Pages subpath, normalize the pathname
+      try {
+        const base = '/suicide-safety-planning-app';
+        const p = window.location.pathname;
+        if (p.startsWith(base)) {
+          const newPath = p.slice(base.length) || '/';
+          // Use expo-router to replace the route so the router sees the normalized path
+          // Cast to any to satisfy TypeScript's strict route path types
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          router.replace((newPath + window.location.search + window.location.hash) as any);
+          // eslint-disable-next-line no-console
+          console.log('EXPO_ROUTER_DEBUG normalized path to', newPath);
+        }
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.warn('EXPO_ROUTER_DEBUG normalize failed', e);
+      }
+    }
   }, []);
 
   return (
