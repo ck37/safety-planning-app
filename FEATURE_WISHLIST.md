@@ -10,7 +10,7 @@ This feature wishlist is informed by evidence-based suicide prevention research.
 
 ### Research-Based Core Components (Stanley-Brown Model)
 - **Means Safety Checklists**: Interactive checklists and reminders to help users and caregivers secure or remove access to lethal means (firearms, medications, etc.) - a critical high-impact strategy emphasized in research [📋 **GitHub Issue #4**](https://github.com/ck37/safety-planning-app/issues/4)
-- **Professional Contact Integration**: Enhanced integration with therapists, counselors, and healthcare providers to allow secure sharing of safety plans (with proper HIPAA compliance)
+- **Professional Contact Integration**: Enhanced integration with therapists, counselors, and healthcare providers to allow secure sharing of safety plans (with proper HIPAA compliance) [📋 **GitHub Issue #6**](https://github.com/ck37/safety-planning-app/issues/6)
 - **Crisis Text/Chat Options**: Beyond voice calls, include text and chat options for crisis support (988 text line, crisis chat services) [📋 **GitHub Issue #5**](https://github.com/ck37/safety-planning-app/issues/5)
 - **Backup Plan Automation**: Automatic "Plan B" options when primary strategies fail (e.g., auto-suggest calling 988 if user indicates other strategies aren't working)
 - **Collaborative Plan Development**: Features to facilitate collaborative safety plan creation with clinicians, parents/caregivers, and family members as emphasized in research

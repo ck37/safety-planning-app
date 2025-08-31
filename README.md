@@ -18,6 +18,40 @@ View the live web version: [https://safety-planning-app.netlify.app/](https://sa
 
 *Note: The web version includes fallbacks for native features like biometric authentication, but provides full access to the core safety planning functionality.*
 
+### 📱 iPhone App Demo with Expo
+
+To experience the full native iPhone app with all features including biometric authentication:
+
+1. **Install Expo Go** from the App Store on your iPhone
+2. **Open the camera app** and scan this QR code or visit the Expo project page
+3. **Launch in Expo Go** to run the native version with full iOS integration
+
+The native version provides access to all features including:
+- Face ID/Touch ID biometric authentication
+- Native iOS notifications and alerts
+- Optimized performance and native UI components
+- Full offline functionality
+- Voice activation features
+
+*For the most authentic experience and to test all security features, we recommend using the native iOS version through Expo Go.*
+
+### 🤖 Android App Demo with Expo
+
+To experience the full native Android app with all features including biometric authentication:
+
+1. **Install Expo Go** from the Google Play Store on your Android device
+2. **Open the camera app** and scan this QR code or visit the Expo project page
+3. **Launch in Expo Go** to run the native version with full Android integration
+
+The native Android version provides access to all features including:
+- Fingerprint/Face unlock biometric authentication
+- Native Android notifications and system integration
+- Optimized performance and Material Design components
+- Full offline functionality
+- Voice activation features
+
+*The Android version offers the same comprehensive feature set as iOS, optimized for Android's security and notification systems.*
+
 ## ✨ Features
 
 ### Core Safety Plan Components
