@@ -12,7 +12,7 @@ This app provides a digital implementation of the Stanley-Brown Safety Planning 
 
 ## 🌐 Live Demo
 
-View the live web version: [https://joyful-truffle-53cfd9.netlify.app/](https://joyful-truffle-53cfd9.netlify.app/)
+View the live web version: [https://safety-planning-app.netlify.app/](https://safety-planning-app.netlify.app/)
 
 *Note: The web version includes fallbacks for native features like biometric authentication, but provides full access to the core safety planning functionality.*
 
