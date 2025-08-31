@@ -36,7 +36,9 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png",
-      "bundler": "metro"
+      "bundler": "metro",
+      "output": "static",
+      "baseUrl": "/suicide-safety-planning-app/"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -45,7 +47,7 @@
       [
         "expo-router",
         {
-          "origin": "https://rork.com/"
+          "origin": "https://ck37.github.io/suicide-safety-planning-app/"
         }
       ],
       "expo-font",
@@ -62,7 +64,7 @@
     },
     "extra": {
       "router": {
-        "origin": "https://rork.com/"
+        "origin": "https://ck37.github.io/suicide-safety-planning-app/"
       },
       "eas": {
         "projectId": "314cb239-3b04-4dd1-8e54-d9551eb21e96"
