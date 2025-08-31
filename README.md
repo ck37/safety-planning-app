@@ -87,11 +87,11 @@ The native Android version provides access to all features including:
 
 ## 🚀 Future Development
 
-See our [Feature Wishlist](FEATURE_WISHLIST.md) for planned improvements and potential new features that could enhance the app's effectiveness in supporting mental health and suicide prevention.
+See our [Feature Wishlist](docs/FEATURE_WISHLIST.md) for planned improvements and potential new features that could enhance the app's effectiveness in supporting mental health and suicide prevention.
 
 ## 💻 For Developers
 
-Interested in contributing? See our [Developer Documentation](DEVELOPERS.md) for complete setup instructions, technical details, and contribution guidelines.
+Interested in contributing? See our [Developer Documentation](docs/DEVELOPERS.md) for complete setup instructions, technical details, and contribution guidelines.
 
 ## 📱 Usage
 
@@ -126,9 +126,9 @@ Interested in contributing? See our [Developer Documentation](DEVELOPERS.md) for
 
 We welcome contributions that improve the app's effectiveness in supporting mental health. Please see our:
 
-- [Contributing Guidelines](CONTRIBUTORS.md) - Important guidelines for working on mental health applications
-- [Developer Documentation](DEVELOPERS.md) - Technical setup and development information
-- [Feature Wishlist](FEATURE_WISHLIST.md) - Planned improvements and feature requests
+- [Contributing Guidelines](docs/CONTRIBUTORS.md) - Important guidelines for working on mental health applications
+- [Developer Documentation](docs/DEVELOPERS.md) - Technical setup and development information
+- [Feature Wishlist](docs/FEATURE_WISHLIST.md) - Planned improvements and feature requests
 
 ## 📞 Crisis Resources
 
