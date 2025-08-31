@@ -8,6 +8,14 @@ This feature wishlist is informed by evidence-based suicide prevention research.
 
 ## 🚨 Crisis Management & Emergency Features
 
+### Research-Based Core Components (Stanley-Brown Model)
+- **Means Safety Checklists**: Interactive checklists and reminders to help users and caregivers secure or remove access to lethal means (firearms, medications, etc.) - a critical high-impact strategy emphasized in research
+- **Professional Contact Integration**: Enhanced integration with therapists, counselors, and healthcare providers to allow secure sharing of safety plans (with proper HIPAA compliance)
+- **Crisis Text/Chat Options**: Beyond voice calls, include text and chat options for crisis support (988 text line, crisis chat services)
+- **Backup Plan Automation**: Automatic "Plan B" options when primary strategies fail (e.g., auto-suggest calling 988 if user indicates other strategies aren't working)
+- **Collaborative Plan Development**: Features to facilitate collaborative safety plan creation with clinicians, parents/caregivers, and family members as emphasized in research
+- **Age-Appropriate Language**: Ensure all content uses 6th-8th grade reading level and youth-friendly language as recommended in research guidelines
+
 ### Enhanced Crisis Detection
 - ~~**Mood Tracking Integration**: Daily mood check-ins with trend analysis to identify patterns that precede crisis situations~~ ✅ **IMPLEMENTED**
 - ~~**Smart Notifications**: Proactive reminders based on user patterns (e.g., "You haven't checked in today, how are you feeling?")~~ ✅ **IMPLEMENTED**
@@ -49,6 +57,13 @@ This feature wishlist is informed by evidence-based suicide prevention research.
 - **Import/Export**: Backup and restore safety plans, share with healthcare providers
 - **Version History**: Track changes to safety plan over time
 
+### Adolescent-Specific UX (Research-Based)
+- **Youth-Centered Design**: Co-design with adolescents who have lived experience to ensure features meet actual teen needs
+- **Non-Stigmatizing Interface**: Avoid clinical appearance; use relatable analogies like "fire drill for mental health emergency"
+- **Multimedia Coping Tools**: Audio guides, animations, and interactive elements to increase engagement while maintaining seriousness
+- **Participatory Design Testing**: Regular usability testing with diverse teens to refine tone, navigation, and content
+- **Low-Cost Device Support**: Ensure app works effectively on budget smartphones commonly used by teens
+
 ## 🤝 Social & Support Features
 
 ### Enhanced Support Network
@@ -84,6 +99,8 @@ This feature wishlist is informed by evidence-based suicide prevention research.
 - **Stealth Mode**: Disguise app appearance for users in unsafe living situations
 - **Data Encryption**: End-to-end encryption for all personal data
 - **Anonymous Usage**: Option to use app without creating accounts or storing personal data
+- **COPPA Compliance**: Proper parental consent mechanisms for users under 13, with clear privacy policies in teen-friendly language
+- **HIPAA-Ready Integration**: Secure, audit-logged data sharing capabilities for healthcare provider integration when needed
 
 ### Safety Monitoring
 - **Check-in Reminders**: Gentle reminders to update safety plan and check mental health status
@@ -149,12 +166,15 @@ This feature wishlist is informed by evidence-based suicide prevention research.
 
 ## 🎯 Implementation Priority
 
-### High Priority (Critical Impact)
+### High Priority (Critical Impact - Research-Based)
 1. ~~Enhanced crisis detection and mood tracking~~ ✅ **COMPLETED**
 2. ~~Quick crisis button and improved emergency access~~ ✅ **COMPLETED**
 3. ~~Voice-activated safety plan reading~~ ✅ **COMPLETED**
 4. ~~Biometric security and privacy enhancements~~ ✅ **COMPLETED**
-5. Multi-language support
+5. **Means Safety Checklists** - Critical high-impact strategy emphasized in research
+6. **Crisis Text/Chat Options** - Essential backup communication methods
+7. **Age-Appropriate Language** - 6th-8th grade reading level for adolescent users
+8. Multi-language support
 
 ### Medium Priority (Significant Value)
 1. AI-powered personalization features
