@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { Heart, Phone, BookOpen } from "lucide-react-native";
+import { Heart, Phone, BookOpen, MessageCircle } from "lucide-react-native";
 import React from "react";
 import { Platform, View, StyleSheet } from "react-native";
 
@@ -30,6 +30,13 @@ export default function TabLayout() {
             options={{
               title: "My Plan",
               tabBarIcon: ({ color }) => <Heart size={24} color={color} />,
+            }}
+          />
+          <Tabs.Screen
+            name="chat"
+            options={{
+              title: "Chat",
+              tabBarIcon: ({ color }) => <MessageCircle size={24} color={color} />,
             }}
           />
           <Tabs.Screen
