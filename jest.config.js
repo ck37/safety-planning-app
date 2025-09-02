@@ -6,6 +6,9 @@ module.exports = {
     '**/__tests__/**/*.(js|jsx|ts|tsx)',
     '**/*.(test|spec).(js|jsx|ts|tsx)'
   ],
+  testPathIgnorePatterns: [
+    '<rootDir>/__tests__/manual/'
+  ],
   collectCoverageFrom: [
     'app/**/*.{js,jsx,ts,tsx}',
     'providers/**/*.{js,jsx,ts,tsx}',
