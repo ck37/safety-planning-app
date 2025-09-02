@@ -131,7 +131,7 @@ export default function ChatScreen() {
                 error: undefined,
               });
               setMessageCount(0);
-            } catch (error) {
+            } catch {
               Alert.alert('Error', 'Failed to clear chat history');
             }
           },
@@ -204,7 +204,7 @@ export default function ChatScreen() {
             <View style={styles.emptyState}>
               <Bot size={48} color="#9CA3AF" />
               <Text style={styles.emptyStateText}>
-                Hello! I'm here to chat with you. How are you feeling today?
+                Hello! I&apos;m here to chat with you. How are you feeling today?
               </Text>
             </View>
           ) : (
