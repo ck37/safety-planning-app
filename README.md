@@ -62,6 +62,8 @@ See our [Feature Wishlist](docs/FEATURE_WISHLIST.md) for planned improvements an
 
 Interested in contributing? See our [Developer Documentation](docs/DEVELOPERS.md) for complete setup instructions, technical details, and contribution guidelines.
 
+**[View Changelog →](docs/CHANGELOG.md)** - Track all changes and new features added to the app.
+
 ## 📱 Usage
 
 ### Creating Your Safety Plan

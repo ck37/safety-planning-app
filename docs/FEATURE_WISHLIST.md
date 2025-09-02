@@ -2,6 +2,8 @@
 
 This document outlines potential improvements and new features that could enhance the effectiveness, accessibility, and user experience of the suicide safety planning app.
 
+**📋 [View Changelog](CHANGELOG.md)** - See completed features and recent updates to the app.
+
 ## 📚 Research Foundation
 
 This feature wishlist is informed by evidence-based suicide prevention research. For detailed information about the research foundation behind safety planning interventions, see our [Safety Planning for Adolescent Suicide Prevention research document](docs/Safety%20Planning%20for%20Adolescent%20Suicide%20Prevention.pdf).
