@@ -26,17 +26,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Testing**: 31 new tests covering AI responses, storage, UI components, and integration scenarios
 - **Performance**: Optimized AI response delays for 50%+ faster test suite execution
 
-### Files Added/Modified
-- `types/Chat.ts` - TypeScript interfaces for chat system
-- `services/ChatAIService.ts` - AI response generation service
-- `services/ChatStorageService.ts` - AsyncStorage persistence service
-- `app/(tabs)/chat/` - Chat tab implementation
-- `app/(tabs)/_layout.tsx` - Navigation integration
-- `__tests__/services/` - Business logic tests
-- `__tests__/manual/` - UI component tests (manual execution)
-- `jest.config.js` - Test configuration updates
-- `docs/FEATURE_WISHLIST.md` - Documentation updates
-
 ### GitHub Integration
 - Implements [GitHub Issue #8](https://github.com/ck37/suicide-safety-planning-app/issues/8)
 - Commit: [ca703df](https://github.com/ck37/suicide-safety-planning-app/commit/ca703df)
