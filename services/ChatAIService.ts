@@ -32,8 +32,8 @@ export class ChatAIService {
         this.conversationContext.shift();
       }
 
-      // Simulate AI processing delay
-      await new Promise(resolve => setTimeout(resolve, 500 + Math.random() * 1000));
+      // Simulate AI processing delay (reduced for faster tests)
+      await new Promise(resolve => setTimeout(resolve, 200 + Math.random() * 300));
 
       const response = this.selectContextualResponse(userMessage);
 

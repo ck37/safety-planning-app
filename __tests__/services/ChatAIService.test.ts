@@ -69,7 +69,7 @@ describe('ChatAIService', () => {
 
       // Should have different responses (rotation working)
       expect(responses.size).toBeGreaterThan(1);
-    });
+    }, 5000); // 5 seconds timeout for faster execution
 
     it('should maintain conversation context', async () => {
       await chatAIService.generateResponse('Hello');
@@ -93,8 +93,8 @@ describe('ChatAIService', () => {
       const endTime = Date.now();
       
       const responseTime = endTime - startTime;
-      expect(responseTime).toBeGreaterThan(500); // At least 500ms
-      expect(responseTime).toBeLessThan(2000); // Less than 2s
+      expect(responseTime).toBeGreaterThan(200); // At least 200ms
+      expect(responseTime).toBeLessThan(600); // Less than 600ms
     });
   });
 
